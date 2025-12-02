@@ -18,18 +18,18 @@ function Item(props: React.ComponentProps<typeof Link>) {
     <li
       className={cn(
         isActive
-          ? "text-rurikon-800"
-          : "text-rurikon-300 hover:text-rurikon-600",
+          ? "text-neutral-900"
+          : "text-neutral-400 hover:text-neutral-700",
         "transition-colors hover:transform-none",
         "-mx-2"
       )}
     >
       <Link
         {...props}
-        className="inline-block w-full px-2 focus-visible:outline focus-visible:outline-rurikon-400
+        className="inline-block w-full px-2 focus-visible:outline focus-visible:outline-neutral-400
         focus-visible:rounded-xs 
         focus-visible:outline-dotted
-        focus-visible:text-rurikon-600"
+        focus-visible:text-neutral-600"
         draggable={false}
       />
     </li>
@@ -38,8 +38,8 @@ function Item(props: React.ComponentProps<typeof Link>) {
 
 export default function Navbar() {
   return (
-    <nav className="mobile:mr-6 sm:mr-10 md:mr-14 w-full mobile:w-16">
-      <ul className="lowercase text-right mobile:sticky top-6 sm:top-10 md:top-14 mb-6 mobile:mb-0 flex gap-2 justify-end mobile:block">
+    <nav className="w-full mb-4">
+      <ul className="lowercase text-center flex gap-2 justify-center">
         <Item href="/">About</Item>
         <Item href="/projects">Projects</Item>
       </ul>

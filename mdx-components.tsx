@@ -9,31 +9,31 @@ export const components: Record<
 > = {
   h1: (props) => (
     <h1
-      className="font-semibold mb-7 text-rurikon-600 text-balance"
+      className="font-semibold mb-7 text-neutral-900 text-balance"
       {...props}
     />
   ),
   h2: (props) => (
     <h2
-      className="font-semibold mt-14 mb-7 text-rurikon-600 text-balance"
+      className="font-semibold mt-14 mb-7 text-neutral-900 text-balance"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
-      className="font-semibold mt-14 mb-7 text-rurikon-600 text-balance"
+      className="font-semibold mt-14 mb-7 text-neutral-900 text-balance"
       {...props}
     />
   ),
   ul: (props) => (
     <ul
-      className="mt-7 list-disc list-outside marker:text-rurikon-200 pl-5"
+      className="mt-7 list-disc list-outside marker:text-neutral-400 pl-5"
       {...props}
     />
   ),
   ol: (props) => (
     <ol
-      className="mt-7 list-decimal list-outside marker:text-rurikon-200 pl-5"
+      className="mt-7 list-decimal list-outside marker:text-neutral-400 pl-5"
       {...props}
     />
   ),
@@ -41,7 +41,7 @@ export const components: Record<
   a: ({ href, ...props }) => {
     return (
       <Link
-        className="break-words decoration-from-font underline underline-offset-2 decoration-rurikon-300 hover:decoration-rurikon-600 focus-visible:outline focus-visible:outline-rurikon-400
+        className="break-words decoration-from-font underline underline-offset-2 decoration-neutral-300 hover:decoration-neutral-600 focus-visible:outline focus-visible:outline-neutral-400
         focus-visible:rounded-xs 
         focus-visible:outline-offset-1
         focus-visible:outline-dotted"
@@ -61,7 +61,7 @@ export const components: Record<
   p: (props) => <p className="mt-7" {...props} />,
   blockquote: (props) => (
     <blockquote
-      className="pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-rurikon-400"
+      className="pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-neutral-500"
       {...props}
     />
   ),
@@ -99,7 +99,7 @@ export const components: Record<
 
     return img;
   },
-  hr: (props) => <hr className="my-14 w-24 border-rurikon-border" {...props} />,
+  hr: (props) => <hr className="my-14 w-24 border-neutral-200" {...props} />,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
