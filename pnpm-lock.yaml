@@ -13,10 +13,10 @@ importers:
         version: 3.1.1
       '@mdx-js/react':
         specifier: ^3.0.1
-        version: 3.1.1(@types/react@18.3.27)(react@19.3.0-canary-fd524fe0-20251121)
+        version: 3.1.1(@types/react@18.3.27)(react@19.3.0-canary-378973b3-20251205)
       '@next/mdx':
         specifier: ^16.0.0
-        version: 16.0.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@18.3.27)(react@19.3.0-canary-fd524fe0-20251121))
+        version: 16.0.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@18.3.27)(react@19.3.0-canary-378973b3-20251205))
       '@tailwindcss/postcss':
         specifier: 4.0.15
         version: 4.0.15
@@ -25,28 +25,28 @@ importers:
         version: 2.0.13
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.6.0(next@16.1.0-canary.10(@babel/core@7.28.5)(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121))(nuxt@4.2.1(@parcel/watcher@2.5.1)(@types/node@20.19.25)(@vue/compiler-sfc@3.5.25)(db0@0.3.4)(ioredis@5.8.2)(lightningcss@1.29.2)(magicast@0.5.1)(rollup@4.53.3)(terser@5.44.1)(typescript@5.9.3)(vite@7.2.6(@types/node@20.19.25)(jiti@2.6.1)(lightningcss@1.29.2)(terser@5.44.1)(yaml@2.8.2))(yaml@2.8.2))(react@19.3.0-canary-fd524fe0-20251121)(vue-router@4.6.3(vue@3.5.25(typescript@5.9.3)))(vue@3.5.25(typescript@5.9.3))
+        version: 1.6.0(next@16.1.0-canary.14(@babel/core@7.28.5)(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205))(nuxt@4.2.1(@parcel/watcher@2.5.1)(@types/node@20.19.25)(@vue/compiler-sfc@3.5.25)(db0@0.3.4)(ioredis@5.8.2)(lightningcss@1.29.2)(magicast@0.5.1)(rollup@4.53.3)(terser@5.44.1)(typescript@5.9.3)(vite@7.2.6(@types/node@20.19.25)(jiti@2.6.1)(lightningcss@1.29.2)(terser@5.44.1)(yaml@2.8.2))(yaml@2.8.2))(react@19.3.0-canary-378973b3-20251205)(vue-router@4.6.3(vue@3.5.25(typescript@5.9.3)))(vue@3.5.25(typescript@5.9.3))
       clsx:
         specifier: ^2.1.0
         version: 2.1.1
       framer-motion:
         specifier: ^12.23.25
-        version: 12.23.25(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121)
+        version: 12.23.25(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205)
       lucide-react:
         specifier: ^0.555.0
-        version: 0.555.0(react@19.3.0-canary-fd524fe0-20251121)
+        version: 0.555.0(react@19.3.0-canary-378973b3-20251205)
       motion:
         specifier: ^12.23.25
-        version: 12.23.25(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121)
+        version: 12.23.25(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205)
       next:
-        specifier: 16.1.0-canary.10
-        version: 16.1.0-canary.10(@babel/core@7.28.5)(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121)
+        specifier: 16.1.0-canary.14
+        version: 16.1.0-canary.14(@babel/core@7.28.5)(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205)
       react:
-        specifier: 19.3.0-canary-fd524fe0-20251121
-        version: 19.3.0-canary-fd524fe0-20251121
+        specifier: 19.3.0-canary-378973b3-20251205
+        version: 19.3.0-canary-378973b3-20251205
       react-dom:
-        specifier: 19.3.0-canary-fd524fe0-20251121
-        version: 19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121)
+        specifier: 19.3.0-canary-378973b3-20251205
+        version: 19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205)
       remark-gfm:
         specifier: ^4.0.0
         version: 4.0.1
@@ -680,8 +680,8 @@ packages:
   '@napi-rs/wasm-runtime@1.1.0':
     resolution: {integrity: sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA==}
 
-  '@next/env@16.1.0-canary.10':
-    resolution: {integrity: sha512-YbPKreQNXf907NdN6AMARZjnNv9eMb/xs2PsW0FUew9MD3XI8tzHuXq97K2FG8UJCKXB5QWCVwoDZmn6Z47tTA==}
+  '@next/env@16.1.0-canary.14':
+    resolution: {integrity: sha512-Y48ZcHyEefdHH6lS2PsJfRlsSHP3SdKxoAQ03FY1cQoLnMCFoKQ7SAubcLwSC08Lk+UXa4RfP+fpYs/GOo4ihA==}
 
   '@next/mdx@16.0.6':
     resolution: {integrity: sha512-NLWJg4mqYHbHr1uyxFIOVuGFn0ACRA0L/JuL8amr8Pos8ZrRQ1/CUw0rUh22D/kPlq5QOyF/vySl9yvuETmDBA==}
@@ -694,50 +694,50 @@ packages:
       '@mdx-js/react':
         optional: true
 
-  '@next/swc-darwin-arm64@16.1.0-canary.10':
-    resolution: {integrity: sha512-IyzlDfqMUjHcFerupuaKXSRCA6hJ0snRm9gaH7RIS0pRD5z2+foM9ajCogjLGyweaphfO6QoMYxgfjpgcvEKKg==}
+  '@next/swc-darwin-arm64@16.1.0-canary.14':
+    resolution: {integrity: sha512-CZmbMOfWSKdnk9rCyXWBHvxwW6Jn1DvAE4BnUYm+ynpWD64IcfWmA71rH7BGKj+90z/8XWsVh8byjvRwfSjbRQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-darwin-x64@16.1.0-canary.10':
-    resolution: {integrity: sha512-AIjbgmTuzi+pps099y5siIPSbVHP0ATBzhQRT/ZlVdxBgz18l9k046el+Qw9uXKAU18yE8A06SqcY0jWyQu8Pg==}
+  '@next/swc-darwin-x64@16.1.0-canary.14':
+    resolution: {integrity: sha512-5J2RoP1fOdm8cChFzVc/TR3mUflRvxYBrf1p1L++CEK6CMEQ2aMGTeXXhu2t5ELTpfkmqm4LpWwKXOADEoN4eg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@next/swc-linux-arm64-gnu@16.1.0-canary.10':
-    resolution: {integrity: sha512-35S6WOSqt5N5O32+H73YpTy7hMHy5kW+Gc8Ga6ehRI4l+OujZ8PoEWVYwlgJjdcerg8ke0ajBJLLpAu/K5uNiQ==}
+  '@next/swc-linux-arm64-gnu@16.1.0-canary.14':
+    resolution: {integrity: sha512-kH+hipzWzuKer9EQhZkbCkyitxakOYWrn2Yf+cfVzZdZQ09X/h/zt3Isz0jIA/jH5CkrMHzicdllE4D9r2HKLw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-arm64-musl@16.1.0-canary.10':
-    resolution: {integrity: sha512-ozuBXBju2YDOu/VpTLV7ltNaLcek8Q7eI2jwC/LxMDP9QPYi6QTuOBS7tUYFMk70DT01r8DIH47C0aZmATHyAQ==}
+  '@next/swc-linux-arm64-musl@16.1.0-canary.14':
+    resolution: {integrity: sha512-XvdUA1GiU3ArJubyfKIwxjm2S7krI9Qi4GEfFJyo6u4F09bc1tlePX1aiIpxAuPm1zR/gwwGkWFIvfrM4kEF/A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-x64-gnu@16.1.0-canary.10':
-    resolution: {integrity: sha512-+Pjqnd4gQzjIJ4w33zn+uGQwbjkPzuqvNYq3kx1TesW5OeGxf3S6HlbASSqQ3a6GBfSQmjKdOfKjUVVGaiiZTQ==}
+  '@next/swc-linux-x64-gnu@16.1.0-canary.14':
+    resolution: {integrity: sha512-GysJV2zUNNH8MysSkBiUVl/9TUM4TMujwo4p5NfstGNI5OTscsAezwjaMRKQnC+80/Mkyh9zbs/2ouhDcmiNFg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-linux-x64-musl@16.1.0-canary.10':
-    resolution: {integrity: sha512-iuOZLXCuTXvQI2IlCVPX1Joypxerao15ROvUVaOo/dk15EEDe0cY7kxyoBwLeoVWAHnjet5RZC4fISQdM1Hp0w==}
+  '@next/swc-linux-x64-musl@16.1.0-canary.14':
+    resolution: {integrity: sha512-enkmjfbqtWhV+5l47GtzMH9p81CEEtCh12m03ac4t5gEoP45dBlnWHxLkw51gYOBmnrBsKBjEgvivoQX1H9UOg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-win32-arm64-msvc@16.1.0-canary.10':
-    resolution: {integrity: sha512-wtFIVVlyT6OpQKqn0KFY2Ci1GZorEsj4mYCqXnjsaZOKtDPFrdV6ep1rTti2j8j9z+LS0ZM5EK2+GTjMo/Z3Ag==}
+  '@next/swc-win32-arm64-msvc@16.1.0-canary.14':
+    resolution: {integrity: sha512-spZRVrUv5vE8HvT2DJ85U6NVufuMuZxUo798pQ0+pftez4dX3d5ym26M0RyiqgTUB6OdlLsPyq1ZbG5Dh8vz8g==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@next/swc-win32-x64-msvc@16.1.0-canary.10':
-    resolution: {integrity: sha512-KN/CZeUlY4gEUlbxcg4vlUtIzZtu8d0JVajqCNfigs7ArYFg7gYtPEYimyz73FRVd0rCAap1tIlLDHMSeUBt6w==}
+  '@next/swc-win32-x64-msvc@16.1.0-canary.14':
+    resolution: {integrity: sha512-WUZgF/si+IfQjkFGd3BaQHf1/vwCYU6BIKNsb9jjKjglWKO/xU/LcfcheLq6+3OvIbfESViSXZJYwAQ8MFz3AQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -2956,8 +2956,8 @@ packages:
   nanotar@0.2.0:
     resolution: {integrity: sha512-9ca1h0Xjvo9bEkE4UOxgAzLV0jHKe6LMaxo37ND2DAhhAtd0j8pR1Wxz+/goMrZO8AEZTWCmyaOsFI/W5AdpCQ==}
 
-  next@16.1.0-canary.10:
-    resolution: {integrity: sha512-VCBY2HD1zCQi05hCO9q8b8sSoqdOnbeCCHQk8vGE8iiPQGxaiSfrfF1D+OibNLsaL+vtMfy4X3ngpvjUDByOHg==}
+  next@16.1.0-canary.14:
+    resolution: {integrity: sha512-/pBpTLS4lOZtArof4ynR5q0zbblYezUIaq/4w5/z+s8msU68O2DDVI2ut7Smn5gczMN02uZ2XPo3QhpUHnkshg==}
     engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
@@ -3389,13 +3389,13 @@ packages:
   rc9@2.1.2:
     resolution: {integrity: sha512-btXCnMmRIBINM2LDZoEmOogIZU7Qe7zn4BpomSKZ/ykbLObuBdvG+mFq11DL6fjH1DRwHhrlgtYWG96bJiC7Cg==}
 
-  react-dom@19.3.0-canary-fd524fe0-20251121:
-    resolution: {integrity: sha512-+M3m+8ysDcPmt7ncitPOX5O71OOKF6lq6INFZFUMJjEGDxvl4CS2D41DJG5MnXcwiWTZLAp/uILZtt4sKTRSyQ==}
+  react-dom@19.3.0-canary-378973b3-20251205:
+    resolution: {integrity: sha512-Rak+je2z/gFCGOP/YeL5vJ2Ut7QjiaIU/yN5c3yj+ssmRh+OFQgyIw9Z+8NcqXXm0IeUBbU5eM8s0/i1tHYqNQ==}
     peerDependencies:
-      react: 19.3.0-canary-fd524fe0-20251121
+      react: 19.3.0-canary-378973b3-20251205
 
-  react@19.3.0-canary-fd524fe0-20251121:
-    resolution: {integrity: sha512-T36dcD3rbOLZsmTmYBl4Cjp02s/qsFo1y1tIAhiqU02ztPhsEp+8V+xgW3ML7L6bSwwCwDLTgDRbXIN66P/jGQ==}
+  react@19.3.0-canary-378973b3-20251205:
+    resolution: {integrity: sha512-u6xCPsRVwStpTCzenkQcGOSR4OAr3wKMR6Sp0iH2fYvz1wOWH5Bt4iWe/WZRc33uBKyXxXMglT3tzMnZKEiUPw==}
     engines: {node: '>=0.10.0'}
 
   readable-stream@2.3.8:
@@ -3513,8 +3513,8 @@ packages:
   sax@1.4.3:
     resolution: {integrity: sha512-yqYn1JhPczigF94DMS+shiDMjDowYO6y9+wB/4WgO0Y19jWYk0lQ4tuG5KI7kj4FTp1wxPj5IFfcrz/s1c3jjQ==}
 
-  scheduler@0.28.0-canary-fd524fe0-20251121:
-    resolution: {integrity: sha512-8KVr3jEIUZXbf6XFkluou7z6/Gwwxr8ULAGB3O4V4kdNIGs+auA3/dBUD8BCkloPgqfpiDnQrhaXF/FBHWxG4A==}
+  scheduler@0.28.0-canary-378973b3-20251205:
+    resolution: {integrity: sha512-dNSXhEBatElswGS5Ii8Mnn8PjKRmJeHU1pP3+x6fHGZ+ui9h6pnC7mgcBybJsHVa0UurPlHV+ydkhO1uRBvQBg==}
 
   scule@1.3.0:
     resolution: {integrity: sha512-6FtHJEvt+pVMIB9IBY+IcCJ6Z5f1iQnytgyfKMhDKgmzYG+TeH/wx1y3l27rshSbLiSanrR9ffZDrEsmjlQF2g==}
@@ -4718,11 +4718,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.1.1(@types/react@18.3.27)(react@19.3.0-canary-fd524fe0-20251121)':
+  '@mdx-js/react@3.1.1(@types/react@18.3.27)(react@19.3.0-canary-378973b3-20251205)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 18.3.27
-      react: 19.3.0-canary-fd524fe0-20251121
+      react: 19.3.0-canary-378973b3-20251205
 
   '@napi-rs/wasm-runtime@1.1.0':
     dependencies:
@@ -4731,37 +4731,37 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
-  '@next/env@16.1.0-canary.10': {}
+  '@next/env@16.1.0-canary.14': {}
 
-  '@next/mdx@16.0.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@18.3.27)(react@19.3.0-canary-fd524fe0-20251121))':
+  '@next/mdx@16.0.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@18.3.27)(react@19.3.0-canary-378973b3-20251205))':
     dependencies:
       source-map: 0.7.6
     optionalDependencies:
       '@mdx-js/loader': 3.1.1
-      '@mdx-js/react': 3.1.1(@types/react@18.3.27)(react@19.3.0-canary-fd524fe0-20251121)
+      '@mdx-js/react': 3.1.1(@types/react@18.3.27)(react@19.3.0-canary-378973b3-20251205)
 
-  '@next/swc-darwin-arm64@16.1.0-canary.10':
+  '@next/swc-darwin-arm64@16.1.0-canary.14':
     optional: true
 
-  '@next/swc-darwin-x64@16.1.0-canary.10':
+  '@next/swc-darwin-x64@16.1.0-canary.14':
     optional: true
 
-  '@next/swc-linux-arm64-gnu@16.1.0-canary.10':
+  '@next/swc-linux-arm64-gnu@16.1.0-canary.14':
     optional: true
 
-  '@next/swc-linux-arm64-musl@16.1.0-canary.10':
+  '@next/swc-linux-arm64-musl@16.1.0-canary.14':
     optional: true
 
-  '@next/swc-linux-x64-gnu@16.1.0-canary.10':
+  '@next/swc-linux-x64-gnu@16.1.0-canary.14':
     optional: true
 
-  '@next/swc-linux-x64-musl@16.1.0-canary.10':
+  '@next/swc-linux-x64-musl@16.1.0-canary.14':
     optional: true
 
-  '@next/swc-win32-arm64-msvc@16.1.0-canary.10':
+  '@next/swc-win32-arm64-msvc@16.1.0-canary.14':
     optional: true
 
-  '@next/swc-win32-x64-msvc@16.1.0-canary.10':
+  '@next/swc-win32-x64-msvc@16.1.0-canary.14':
     optional: true
 
   '@nodelib/fs.scandir@2.1.5':
@@ -5556,12 +5556,12 @@ snapshots:
       unhead: 2.0.19
       vue: 3.5.25(typescript@5.9.3)
 
-  '@vercel/analytics@1.6.0(next@16.1.0-canary.10(@babel/core@7.28.5)(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121))(nuxt@4.2.1(@parcel/watcher@2.5.1)(@types/node@20.19.25)(@vue/compiler-sfc@3.5.25)(db0@0.3.4)(ioredis@5.8.2)(lightningcss@1.29.2)(magicast@0.5.1)(rollup@4.53.3)(terser@5.44.1)(typescript@5.9.3)(vite@7.2.6(@types/node@20.19.25)(jiti@2.6.1)(lightningcss@1.29.2)(terser@5.44.1)(yaml@2.8.2))(yaml@2.8.2))(react@19.3.0-canary-fd524fe0-20251121)(vue-router@4.6.3(vue@3.5.25(typescript@5.9.3)))(vue@3.5.25(typescript@5.9.3))':
+  '@vercel/analytics@1.6.0(next@16.1.0-canary.14(@babel/core@7.28.5)(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205))(nuxt@4.2.1(@parcel/watcher@2.5.1)(@types/node@20.19.25)(@vue/compiler-sfc@3.5.25)(db0@0.3.4)(ioredis@5.8.2)(lightningcss@1.29.2)(magicast@0.5.1)(rollup@4.53.3)(terser@5.44.1)(typescript@5.9.3)(vite@7.2.6(@types/node@20.19.25)(jiti@2.6.1)(lightningcss@1.29.2)(terser@5.44.1)(yaml@2.8.2))(yaml@2.8.2))(react@19.3.0-canary-378973b3-20251205)(vue-router@4.6.3(vue@3.5.25(typescript@5.9.3)))(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       nuxt: 4.2.1(@parcel/watcher@2.5.1)(@types/node@20.19.25)(@vue/compiler-sfc@3.5.25)(db0@0.3.4)(ioredis@5.8.2)(lightningcss@1.29.2)(magicast@0.5.1)(rollup@4.53.3)(terser@5.44.1)(typescript@5.9.3)(vite@7.2.6(@types/node@20.19.25)(jiti@2.6.1)(lightningcss@1.29.2)(terser@5.44.1)(yaml@2.8.2))(yaml@2.8.2)
     optionalDependencies:
-      next: 16.1.0-canary.10(@babel/core@7.28.5)(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121)
-      react: 19.3.0-canary-fd524fe0-20251121
+      next: 16.1.0-canary.14(@babel/core@7.28.5)(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205)
+      react: 19.3.0-canary-378973b3-20251205
       vue: 3.5.25(typescript@5.9.3)
       vue-router: 4.6.3(vue@3.5.25(typescript@5.9.3))
 
@@ -6340,14 +6340,14 @@ snapshots:
 
   fraction.js@5.3.4: {}
 
-  framer-motion@12.23.25(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121):
+  framer-motion@12.23.25(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205):
     dependencies:
       motion-dom: 12.23.23
       motion-utils: 12.23.6
       tslib: 2.8.1
     optionalDependencies:
-      react: 19.3.0-canary-fd524fe0-20251121
-      react-dom: 19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121)
+      react: 19.3.0-canary-378973b3-20251205
+      react-dom: 19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205)
 
   fresh@2.0.0: {}
 
@@ -6743,9 +6743,9 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@0.555.0(react@19.3.0-canary-fd524fe0-20251121):
+  lucide-react@0.555.0(react@19.3.0-canary-378973b3-20251205):
     dependencies:
-      react: 19.3.0-canary-fd524fe0-20251121
+      react: 19.3.0-canary-378973b3-20251205
 
   magic-regexp@0.10.0:
     dependencies:
@@ -7258,13 +7258,13 @@ snapshots:
 
   motion-utils@12.23.6: {}
 
-  motion@12.23.25(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121):
+  motion@12.23.25(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205):
     dependencies:
-      framer-motion: 12.23.25(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121)
+      framer-motion: 12.23.25(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205)
       tslib: 2.8.1
     optionalDependencies:
-      react: 19.3.0-canary-fd524fe0-20251121
-      react-dom: 19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121)
+      react: 19.3.0-canary-378973b3-20251205
+      react-dom: 19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205)
 
   mrmime@2.0.1: {}
 
@@ -7278,25 +7278,25 @@ snapshots:
 
   nanotar@0.2.0: {}
 
-  next@16.1.0-canary.10(@babel/core@7.28.5)(react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121))(react@19.3.0-canary-fd524fe0-20251121):
+  next@16.1.0-canary.14(@babel/core@7.28.5)(react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205))(react@19.3.0-canary-378973b3-20251205):
     dependencies:
-      '@next/env': 16.1.0-canary.10
+      '@next/env': 16.1.0-canary.14
       '@swc/helpers': 0.5.15
       baseline-browser-mapping: 2.8.32
       caniuse-lite: 1.0.30001757
       postcss: 8.4.31
-      react: 19.3.0-canary-fd524fe0-20251121
-      react-dom: 19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121)
-      styled-jsx: 5.1.6(@babel/core@7.28.5)(react@19.3.0-canary-fd524fe0-20251121)
+      react: 19.3.0-canary-378973b3-20251205
+      react-dom: 19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205)
+      styled-jsx: 5.1.6(@babel/core@7.28.5)(react@19.3.0-canary-378973b3-20251205)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 16.1.0-canary.10
-      '@next/swc-darwin-x64': 16.1.0-canary.10
-      '@next/swc-linux-arm64-gnu': 16.1.0-canary.10
-      '@next/swc-linux-arm64-musl': 16.1.0-canary.10
-      '@next/swc-linux-x64-gnu': 16.1.0-canary.10
-      '@next/swc-linux-x64-musl': 16.1.0-canary.10
-      '@next/swc-win32-arm64-msvc': 16.1.0-canary.10
-      '@next/swc-win32-x64-msvc': 16.1.0-canary.10
+      '@next/swc-darwin-arm64': 16.1.0-canary.14
+      '@next/swc-darwin-x64': 16.1.0-canary.14
+      '@next/swc-linux-arm64-gnu': 16.1.0-canary.14
+      '@next/swc-linux-arm64-musl': 16.1.0-canary.14
+      '@next/swc-linux-x64-gnu': 16.1.0-canary.14
+      '@next/swc-linux-x64-musl': 16.1.0-canary.14
+      '@next/swc-win32-arm64-msvc': 16.1.0-canary.14
+      '@next/swc-win32-x64-msvc': 16.1.0-canary.14
       sharp: 0.34.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -7928,12 +7928,12 @@ snapshots:
       defu: 6.1.4
       destr: 2.0.5
 
-  react-dom@19.3.0-canary-fd524fe0-20251121(react@19.3.0-canary-fd524fe0-20251121):
+  react-dom@19.3.0-canary-378973b3-20251205(react@19.3.0-canary-378973b3-20251205):
     dependencies:
-      react: 19.3.0-canary-fd524fe0-20251121
-      scheduler: 0.28.0-canary-fd524fe0-20251121
+      react: 19.3.0-canary-378973b3-20251205
+      scheduler: 0.28.0-canary-378973b3-20251205
 
-  react@19.3.0-canary-fd524fe0-20251121: {}
+  react@19.3.0-canary-378973b3-20251205: {}
 
   readable-stream@2.3.8:
     dependencies:
@@ -8110,7 +8110,7 @@ snapshots:
 
   sax@1.4.3: {}
 
-  scheduler@0.28.0-canary-fd524fe0-20251121: {}
+  scheduler@0.28.0-canary-378973b3-20251205: {}
 
   scule@1.3.0: {}
 
@@ -8330,10 +8330,10 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.7
 
-  styled-jsx@5.1.6(@babel/core@7.28.5)(react@19.3.0-canary-fd524fe0-20251121):
+  styled-jsx@5.1.6(@babel/core@7.28.5)(react@19.3.0-canary-378973b3-20251205):
     dependencies:
       client-only: 0.0.1
-      react: 19.3.0-canary-fd524fe0-20251121
+      react: 19.3.0-canary-378973b3-20251205
     optionalDependencies:
       '@babel/core': 7.28.5
 

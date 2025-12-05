@@ -19,9 +19,9 @@
     "framer-motion": "^12.23.25",
     "lucide-react": "^0.555.0",
     "motion": "^12.23.25",
-    "next": "16.1.0-canary.10",
-    "react": "19.3.0-canary-fd524fe0-20251121",
-    "react-dom": "19.3.0-canary-fd524fe0-20251121",
+    "next": "16.1.0-canary.14",
+    "react": "19.3.0-canary-378973b3-20251205",
+    "react-dom": "19.3.0-canary-378973b3-20251205",
     "remark-gfm": "^4.0.0",
     "sharp": "^0.33.4",
     "simplex-noise": "^4.0.3"
@@ -31,8 +31,8 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8.4.47",
-    "tailwindcss": "4.0.0-beta.8",
     "tailwind-merge": "^3.4.0",
+    "tailwindcss": "4.0.0-beta.8",
     "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a"
