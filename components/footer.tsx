@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, Download, ExternalLink } from "lucide-react";
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
@@ -24,8 +24,9 @@ export default function Footer() {
       <div className="flex items-center gap-2">
         <button
           onClick={handleCopyEmail}
-          className="group relative flex items-center gap-2 px-3 py-1.5 text-xs font-medium hover:bg-neutral-100 border border-neutral-200 rounded-full transition-colors cursor-pointer font-[family-name:var(--font-family-sans)] tracking-[-0.006em]"
+          className="group relative flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium hover:bg-neutral-100 border border-neutral-200 rounded-full transition-colors cursor-pointer font-[family-name:var(--font-family-sans)] tracking-[-0.006em]"
         >
+          <span>{copied ? "Copied!" : "Email me"}</span>
           <AnimatePresence mode="wait">
             {copied ? (
               <motion.span
@@ -35,7 +36,7 @@ export default function Footer() {
                 exit={{ scale: 0.5, opacity: 0 }}
                 className="text-green-600"
               >
-                <Check className="w-3.5 h-3.5" />
+                <Check className="w-3 h-3" />
               </motion.span>
             ) : (
               <motion.span
@@ -44,12 +45,28 @@ export default function Footer() {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.5, opacity: 0 }}
               >
-                <Copy className="w-3.5 h-3.5" />
+                <Copy className="w-3 h-3" />
               </motion.span>
             )}
           </AnimatePresence>
-          <span>{copied ? "Copied!" : "Email me"}</span>
         </button>
+        <a
+          href="https://www.linkedin.com/in/tom-renard-2021/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium hover:bg-neutral-100 border border-neutral-200 rounded-full transition-colors font-[family-name:var(--font-family-sans)] tracking-[-0.006em]"
+        >
+          LinkedIn
+          <ExternalLink className="w-3 h-3" />
+        </a>
+        <a
+          href="/Tom_Renard_Resume.pdf"
+          download
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium hover:bg-neutral-100 border border-neutral-200 rounded-full transition-colors font-[family-name:var(--font-family-sans)] tracking-[-0.006em]"
+        >
+          Resume
+          <Download className="w-3 h-3" />
+        </a>
       </div>
     </footer>
   );
