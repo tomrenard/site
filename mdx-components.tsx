@@ -15,7 +15,7 @@ interface ButtonProps {
 function Button({ href, variant = "primary", children }: ButtonProps) {
   const isExternal = href.startsWith("https://");
   const baseStyles =
-    "inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 leading-none";
+    "inline-flex items-center justify-center px-5 h-9 text-sm font-medium rounded-full transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 [&_p]:m-0";
   const variants: Record<ButtonVariant, string> = {
     primary: "bg-neutral-900 text-white hover:bg-neutral-700",
     secondary:
@@ -67,7 +67,7 @@ interface LeadProps {
 }
 
 function Lead({ children }: LeadProps) {
-  return <p className="mt-3 text-neutral-600 leading-relaxed">{children}</p>;
+  return <div className="mt-3 text-neutral-600 leading-relaxed">{children}</div>;
 }
 
 interface StackListProps {
