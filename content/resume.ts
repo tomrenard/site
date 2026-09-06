@@ -164,6 +164,7 @@ export const roles: Role[] = [
     location: "Berlin, DE",
     start: "Sep 2020",
     end: "Sep 2021",
+    blurb: "Client work for e-commerce sites and small agencies.",
     tech: ["Next.js", "Gatsby", "Sanity"],
     bullets: [
       {
