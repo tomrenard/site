@@ -33,54 +33,50 @@ export const metadata = {
 
 Performance is mostly decided before anyone opens a profiler. It is decided when you choose what runs on the client at all.
 
-The clearest example I have is my own: [Repères 2027](/projects) ships around 10 KB of JavaScript for a full questionnaire and results flow. Not because I optimised it down, but because the architecture only allows one interactive island. No framework runtime in the browser, no client dependencies, no web fonts, no analytics, no embeds. Every one of those is a decision someone can make in an afternoon and nobody can undo in a quarter.
+The clearest example I have is my own: [Repères 2027](/projects) ships around 10 KB of JavaScript for a full questionnaire and results flow. That is the questionnaire island and Astro's prefetch, nothing else. Not because I optimised it down, but because there is only one interactive island in the whole site. No client dependencies, no web fonts, no analytics, no embeds. Every one of those is a decision someone can make in an afternoon and nobody can undo in a quarter.
 
-The same instinct applies at work in the opposite direction: a marketing page and a contact form have completely different budgets, and treating them the same is how you end up shipping a 300 KB bundle to a page whose only job is to load fast on a phone on mobile data.
+The same thinking applies at work, where the answer is different per page. A marketing page and a contact form have different budgets, and treating them the same is how a page whose only job is to load fast on mobile data ends up shipping 300 KB.
 
 ## The client/server line is the hardest call in modern React
 
 Server components, islands, streaming and hydration all come down to one question asked repeatedly: does this need to exist in the browser?
 
-I have moved three production applications to the Next.js App Router, and I now work daily in an Astro codebase where the default is zero client JavaScript and interactivity is opt in. Those two models teach the same lesson from opposite ends. The App Router lets you accidentally make everything a client component; Astro makes you justify every island.
+I have moved three production applications to the Next.js App Router, and I now work daily in an Astro codebase where the default is zero client JavaScript and interactivity is opt in. Those two models teach the same lesson from opposite ends. The App Router lets you accidentally make everything a client component. Astro makes you justify every island.
 
-What I look for in review: state that could have stayed on the server, data fetched in the browser that the server already had, and effects doing work that belongs in a loader. Most "React is slow" complaints are a boundary drawn in the wrong place.
+What I look for in review: state that could have stayed on the server, data fetched in the browser that the server already had, and effects doing work that belongs in a loader.
 
 ## A design system is a migration problem, not a component problem
 
-Designing a good component API is a solved problem with a hundred blog posts. Getting a real organisation onto it is not.
+Getting a real organisation onto a design system is much harder than designing one.
 
 I co-own the design to code rollout at Aroundhome: design tokens, then a Tailwind v4 config, then the shared component library, then out to its consumer apps. The hard part is none of those artefacts. It is the sequencing. Tokens have to land before the config, the config before the library, and the library before any consumer can migrate without doing the work twice. I maintain the tracker that holds that order, because the order is the thing teams get wrong.
 
-The version of this I am proudest of is smaller. Our contact flow now runs under nine different consumer brands, and adding the tenth is one configuration entry rather than a project. That is what a design system is actually for.
+The smaller version of the same idea: our contact page renders under nine consumer brands, and the brand layer is a per brand configuration entry rather than a fork of the page. Adding the tenth brand is a config change. The routing and infrastructure that get a visitor to that page are a separate problem, and the next section is about those.
 
 ## Under React, there is a web platform
 
 This is the part I find most frontend engineers have never had to learn, and it is where scaled frontends actually break.
 
-A partial list from one feature that put a form on nine domains: cookies are scoped to a domain, so a cross-domain hop gives you a different visitor and your funnel quietly attributes half a session to the wrong place. Consent state has to survive the same hop or the CMP re-opens on top of the form the user was filling in. CORS has to be configured per origin, and nine brands means nine origins. The CDN needs an explicit behaviour for the route, or your request never reaches the application. Cache-control matters: a contact page that gets cached is a contact page that shows someone else's data. And a fallback timer that fires on a slow navigation can strip the analytics linker parameter off the URL on exactly the connections you care about most.
+A partial list from one feature that put a form on nine domains. Cookies are scoped to a domain, so a cross-domain hop gives you a different visitor id and your funnel quietly attributes half a session to the wrong place. Consent state is stored the same way, so it does not survive the hop either, and the consent banner re-opens on top of the form the user was filling in. CORS is per origin, and nine brands means nine origins, which cannot be wildcarded once the request carries credentials. The CDN needs an explicit behaviour for the route or the request never reaches the application at all. Cache headers matter: a personalised response that lands in a shared cache is someone else's data, which is why that page answers `no-store`. And a fallback timer that fires on a slow navigation can strip the analytics linker parameter off the URL, on exactly the connections you least want to lose.
 
 None of that is React. All of it is frontend.
 
-## How to ship a risky change without a big bang
+## How to ship a risky change, and know whether it worked
 
-The interesting question about a change like moving a contact step to another domain is not how you build it. It is how you turn it on.
+The interesting question about moving a contact step to another domain is not how you build it. It is how you turn it on.
 
-Behind a flag, in arms, with a guardrail metric and a threshold that kills it. Scoped by an allowlist of supported hosts rather than a denylist of unsupported ones, so that a brand added next quarter cannot silently fall into a 404: the failure mode of a denylist is that new things break, and the failure mode of an allowlist is that new things do nothing. Only one of those pages a customer.
+Behind a feature flag, split into arms so the change can be compared against the current behaviour, with a guardrail metric and a threshold that switches it off. Scoped by an allowlist of supported hosts rather than a denylist of unsupported ones, because the failure mode of a denylist is that a brand added next quarter walks into a 404, and the failure mode of an allowlist is that it quietly keeps the old behaviour. Only one of those reaches a customer.
 
-I care about the rollout mechanism as much as the feature. It is the difference between finding out from your dashboard and finding out from support.
+Knowing whether it worked is the other half, and frontends are bad at telling you. A backend that breaks returns a 500 and someone gets paged. A frontend that breaks renders something plausible. I found a page in our funnel serving a not-found state under an HTTP 200: a soft 404, with no error reported, no retry and no alert, so nothing in the system had ever counted it as a failure.
 
-## Frontends fail silently, so make them loud
-
-A backend that breaks returns a 500 and someone gets paged. A frontend that breaks renders something plausible and nobody hears about it.
-
-I found a page in our funnel answering HTTP 200 with a not-found state: no error reported, no retry, no alert, and a customer looking at a dead end. It had presumably been doing that for a while, because nothing in the system considered it a failure.
-
-So: report the states that are invisible from the outside, be suspicious of your own instrumentation, and treat a metric you cannot reproduce as a bug in the metric until proven otherwise. Frontend events are the easiest telemetry in the stack to get quietly wrong, because the browser is a hostile place to measure from.
+So I am suspicious of frontend telemetry by default, including my own. The browser is a hostile place to measure from, and a number I cannot reproduce is a bug in the number until proven otherwise.
 
 ## Accessibility is a deadline, not a nice to have
 
-I took Doodle's UI to WCAG 2.1 AA ahead of the European Accessibility Act deadline. The useful reframing there was not moral, it was commercial: after that date, inaccessible is unshippable in Europe. That changes the conversation with a stakeholder completely.
+I took Doodle's UI to WCAG 2.1 AA ahead of the European Accessibility Act deadline of 28 June 2025. The useful reframing was not moral, it was commercial: for the services it covers, accessible stopped being optional on that date.
 
-The work itself is semantics, focus management and keyboard order, mostly. It is also the area where I trust automated tooling least: a checker will tell you an element has an accessible name, not whether a keyboard user can actually complete the flow.
+It is worth being precise about the scope, because most people are not. The EAA applies to a defined list of product and service categories sold to consumers, e-commerce among them, and it exempts microenterprises providing services. It is not a blanket rule that every website must conform. The instrument people are usually thinking of is the Web Accessibility Directive, which covers the public sector. Doodle sells a self serve consumer plan online, which is what puts its purchase and sign in flow inside the EAA's scope. The benchmark both point at is EN 301 549, which in practice means WCAG 2.1 AA.
 
-Worth saying, since this page is a claim about rigour: a review of this very site found my inline link focus ring at 1px dotted grey, which is a real failure of WCAG 2.2 focus appearance, on a site that lists WCAG 2.2 as a skill. It is fixed. That is roughly how often this happens to everyone.
+Since this page is a claim about rigour: a review of this very site caught my own inline link focus ring at 1px dotted grey, measuring 2.46:1 against the background where 3:1 is required. That is SC 1.4.11 Non-text Contrast, level AA, and it has been in the spec since WCAG 2.1. My first diagnosis called it the WCAG 2.2 focus appearance criterion, which is wrong twice over: that is SC 2.4.13, and it is level AAA. Being imprecise about which criterion you failed is its own kind of failure. It is fixed.
+
+The work itself is mostly semantics, focus management and keyboard order. It is also the area where I trust automated tooling least. A checker will tell you an element has an accessible name. It will not tell you whether a keyboard user can complete the flow.
