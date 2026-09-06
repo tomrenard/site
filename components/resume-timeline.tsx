@@ -6,9 +6,9 @@ export function ResumeTimeline() {
       {roles.map((role, i) => (
         <section key={role.company}>
           {i > 0 && <hr className="my-8 w-16 border-neutral-200" />}
-          <h3 className="font-semibold mt-6 mb-2 text-neutral-900 text-balance first:mt-0">
+          <h2 className="font-semibold mt-6 mb-2 text-neutral-900 text-balance first:mt-0">
             {role.company}, {role.title}
-          </h3>
+          </h2>
           <p className="mt-1 mb-3 text-sm text-neutral-500 tracking-wide">
             {role.location}, {role.start} to {role.end} · {role.tech.join(" • ")}
           </p>

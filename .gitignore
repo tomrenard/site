@@ -4,3 +4,4 @@ node_modules
 
 # local drafts, not part of the site
 drafts/
+tsconfig.tsbuildinfo

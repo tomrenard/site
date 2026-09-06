@@ -1,3 +1,4 @@
+/// <reference types="react/canary" />
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -8,11 +9,9 @@ import cn from "clsx";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { WavyBackground } from "@/components/wavy-background";
+import { SITE_URL, SITE_DESCRIPTION as DESCRIPTION } from "@/content/site";
 import "./globals.css";
 
-const SITE_URL = "https://tomrenard.site";
-const DESCRIPTION =
-  "Senior product engineer in Berlin. Frontend deep, ships across the stack, owns the outcome after the ship.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -21,7 +20,6 @@ export const metadata: Metadata = {
     default: "Tom Renard, Senior Product Engineer",
   },
   description: DESCRIPTION,
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: SITE_URL,
@@ -43,7 +41,7 @@ const personSchema = {
   name: "Tom Renard",
   jobTitle: "Senior Product Engineer",
   url: SITE_URL,
-  email: "mailto:renard.tom35@gmail.com",
+  email: "renard.tom35@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Berlin",
@@ -108,7 +106,6 @@ export default function RootLayout({
         </div>
         <script
           type="application/ld+json"
-          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
         <Analytics />
