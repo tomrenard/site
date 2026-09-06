@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 
-// @ts-expect-error
 import { ViewTransition } from "react";
 
 import cn from "clsx";
@@ -12,11 +11,64 @@ import { WavyBackground } from "@/components/wavy-background";
 import { CustomCursor } from "@/components/custom-cursor";
 import "./globals.css";
 
+const SITE_URL = "https://tomrenard.site";
+const DESCRIPTION =
+  "Senior product engineer in Berlin. Frontend deep, ships across the stack, owns the outcome after the ship.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     template: "%s - Tom Renard",
-    default: "Tom Renard",
+    default: "Tom Renard, Senior Product Engineer",
   },
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Tom Renard",
+    title: "Tom Renard, Senior Product Engineer",
+    description: DESCRIPTION,
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tom Renard, Senior Product Engineer",
+    description: DESCRIPTION,
+  },
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Tom Renard",
+  jobTitle: "Senior Product Engineer",
+  url: SITE_URL,
+  email: "mailto:renard.tom35@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Berlin",
+    addressCountry: "DE",
+  },
+  worksFor: { "@type": "Organization", name: "Aroundhome" },
+  alumniOf: [
+    { "@type": "Organization", name: "EM Normandie" },
+    { "@type": "Organization", name: "Le Wagon" },
+  ],
+  knowsAbout: [
+    "React",
+    "TypeScript",
+    "Next.js",
+    "Astro",
+    "Go",
+    "Product engineering",
+    "Web performance",
+    "Web accessibility",
+  ],
+  sameAs: [
+    "https://github.com/tomrenard",
+    "https://www.linkedin.com/in/tom-renard-2021/",
+  ],
 };
 
 export const viewport: Viewport = {
@@ -56,6 +108,11 @@ export default function RootLayout({
             <Footer />
           </main>
         </div>
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <Analytics />
       </body>
     </html>
