@@ -90,7 +90,7 @@ export const roles: Role[] = [
       },
       {
         label: "Design to code",
-        text: "own the component and rollout tracker that sequences design tokens, a Tailwind v4 config and the shared component library out to its consumer apps.",
+        text: "co-own the design to code rollout: design tokens, a Tailwind v4 config and the shared component library out to its consumer apps, sequenced through a tracker I maintain.",
       },
       {
         label: "Across the stack",
