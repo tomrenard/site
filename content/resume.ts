@@ -38,7 +38,7 @@ export const profile = {
 };
 
 export const summary =
-  "Senior product engineer with 6+ years building customer facing web products, mostly React and TypeScript. I own features end to end: shaping the requirement with product and design, building across the stack, then owning the rollout and the read on the result. Deepest in frontend, comfortable in Go and Ruby services and the infrastructure in front of them.";
+  "Senior product engineer with 6+ years building customer facing web products, mostly React and TypeScript. I own features end to end: shaping the requirement with product and design, building across the stack, then owning the rollout and the read on the result. Deepest in frontend, comfortable in the Go and Ruby services behind it and the infrastructure in front.";
 
 export const skills: SkillGroup[] = [
   { name: "Languages", items: ["TypeScript", "JavaScript", "Go", "Ruby", "SQL"] },
