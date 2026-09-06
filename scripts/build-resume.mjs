@@ -160,7 +160,7 @@ ${projects
 ${education
   .map(
     (e) =>
-      `<div class="edu"><span>${esc(e.what)} — ${esc(
+      `<div class="edu"><span>${esc(e.what)}, ${esc(
         e.where
       )}</span><span class="when">${esc(e.year)}</span></div>`
   )
