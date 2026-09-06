@@ -1,7 +1,7 @@
+/// <reference types="react/canary" />
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 
-// @ts-expect-error
 import { ViewTransition } from "react";
 
 import cn from "clsx";
@@ -9,18 +9,66 @@ import cn from "clsx";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { WavyBackground } from "@/components/wavy-background";
-import { CustomCursor } from "@/components/custom-cursor";
+import { SITE_URL, SITE_DESCRIPTION as DESCRIPTION } from "@/content/site";
 import "./globals.css";
 
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     template: "%s - Tom Renard",
-    default: "Tom Renard",
+    default: "Tom Renard, Senior Product Engineer",
+  },
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Tom Renard",
+    title: "Tom Renard, Senior Product Engineer",
+    description: DESCRIPTION,
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tom Renard, Senior Product Engineer",
+    description: DESCRIPTION,
   },
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Tom Renard",
+  jobTitle: "Senior Product Engineer",
+  url: SITE_URL,
+  email: "renard.tom35@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Berlin",
+    addressCountry: "DE",
+  },
+  worksFor: { "@type": "Organization", name: "Aroundhome" },
+  alumniOf: [
+    { "@type": "Organization", name: "EM Normandie" },
+    { "@type": "Organization", name: "Le Wagon" },
+  ],
+  knowsAbout: [
+    "React",
+    "TypeScript",
+    "Next.js",
+    "Astro",
+    "Go",
+    "Product engineering",
+    "Web performance",
+    "Web accessibility",
+  ],
+  sameAs: [
+    "https://github.com/tomrenard",
+    "https://www.linkedin.com/in/tom-renard-2021/",
+  ],
+};
+
 export const viewport: Viewport = {
-  maximumScale: 1,
   colorScheme: "only light",
   themeColor: "#fcfcfc",
 };
@@ -44,7 +92,6 @@ export default function RootLayout({
           containerClassName="fixed inset-0 z-0 pointer-events-none opacity-50"
           backgroundFill="#fff8f5"
         />
-        <CustomCursor />
         <div className="fixed h-6 sm:h-10 md:h-14 w-full top-0 left-0 z-30 pointer-events-none content-fade-out" />
         <div className="flex flex-col items-center relative z-10">
           <Navbar />
@@ -56,6 +103,10 @@ export default function RootLayout({
             <Footer />
           </main>
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <Analytics />
       </body>
     </html>

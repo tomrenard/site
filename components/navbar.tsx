@@ -41,6 +41,7 @@ export default function Navbar() {
     <nav className="w-full mb-4">
       <ul className="lowercase text-center flex gap-2 justify-center">
         <Item href="/">About</Item>
+        <Item href="/work">Work</Item>
         <Item href="/projects">Projects</Item>
       </ul>
     </nav>
