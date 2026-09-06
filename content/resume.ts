@@ -41,10 +41,7 @@ export const summary =
   "Senior product engineer with 6+ years building customer facing web products, mostly React and TypeScript. I own features end to end: shaping the requirement with product and design, building across the stack, then owning the rollout and the read on the result. Deepest in frontend, comfortable in Go and Ruby services and the infrastructure in front of them.";
 
 export const skills: SkillGroup[] = [
-  {
-    name: "Languages",
-    items: ["TypeScript", "JavaScript (ES6+)", "Go", "Ruby", "SQL", "HTML5", "CSS3"],
-  },
+  { name: "Languages", items: ["TypeScript", "JavaScript", "Go", "Ruby", "SQL"] },
   {
     name: "Frontend",
     items: [
@@ -52,30 +49,22 @@ export const skills: SkillGroup[] = [
       "Next.js (App Router, RSC)",
       "Astro",
       "Tailwind CSS",
-      "Radix UI",
-      "shadcn/ui",
+      "GraphQL",
       "WCAG 2.2",
     ],
   },
   {
-    name: "Data and services",
-    items: ["GraphQL (Apollo)", "REST", "Postgres", "TanStack Query", "Zustand", "SWR"],
-  },
-  {
-    name: "Infrastructure and tooling",
+    name: "Platform",
     items: [
+      "Postgres",
       "Terraform",
       "CloudFront",
       "Docker",
       "GitHub Actions",
-      "AWS",
-      "Vercel",
       "Datadog",
       "Playwright",
       "Vitest",
-      "Nx",
       "Claude Code",
-      "Cursor",
     ],
   },
 ];
@@ -88,7 +77,7 @@ export const roles: Role[] = [
     start: "Jun 2026",
     end: "now",
     blurb:
-      "Small team owning the flow from a customer describing a home project to being connected with companies who can do it.",
+      "Two-sided marketplace for home improvement: homeowners describe a project, Aroundhome matches them with vetted local trade companies, and the partner pays for the introduction. Thousands of requests a week.",
     tech: ["React", "TypeScript", "Astro", "Go", "Ruby", "Terraform"],
     bullets: [
       {
@@ -175,7 +164,6 @@ export const roles: Role[] = [
     location: "Berlin, DE",
     start: "Sep 2020",
     end: "Sep 2021",
-    blurb: "Client work for e-commerce and small agencies.",
     tech: ["Next.js", "Gatsby", "Sanity"],
     bullets: [
       {
@@ -186,6 +174,23 @@ export const roles: Role[] = [
         onResume: false,
       },
     ],
+  },
+];
+
+/**
+ * Resume only. The /projects page carries the longer prose version;
+ * keep the facts here in step with it.
+ */
+export const projects = [
+  {
+    name: "Repères 2027",
+    tech: "Astro, TypeScript",
+    text: "Voting advice app for the French presidential election. Every candidate position carries a dated source and the build fails without one.",
+  },
+  {
+    name: "Wattson and Sparfuchs",
+    tech: "Python, Claude Code",
+    text: "Personal endurance coach and tax advisor: deterministic scripts do every calculation, the model only does judgement.",
   },
 ];
 

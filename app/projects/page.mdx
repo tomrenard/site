@@ -31,7 +31,7 @@ export const metadata = {
 
 A voting advice app for the 2027 French presidential election. In this category credibility is the product, so the build enforces it. Every candidate position needs a dated source, every candidate answers the identical set of statements, and the build fails if either is untrue. Ties are broken by a session seed and shown as ties. There is no server, so answers never leave the browser.
 
-Each rule answers a documented failure of the 2022 French equivalent, which broke ties in favour of the same candidate every time, covered 15 of about 40 candidates, and kept people's answers until the regulator asked about it. Ships around 10 KB of JavaScript.
+Each rule answers a documented failure of the 2022 French equivalent, which broke ties in favour of the same candidate every time, covered 15 of about 40 candidates, and retained answers in a resellable form until the CNIL opened a review. Ships around 10 KB of JavaScript.
 
 ---
 
@@ -39,7 +39,7 @@ Each rule answers a documented failure of the 2022 French equivalent, which brok
 
 <TechTags>Python • Claude Code skills</TechTags>
 
-Two personal advisors built the same way. Wattson is an endurance coach that reads my training data. Sparfuchs handles tax and money as a French citizen living in Germany.
+Two personal advisors built the same way. Wattson is an endurance coach that reads my training data from intervals.icu. Sparfuchs handles tax and money as a French citizen living in Germany.
 
 The architecture is the point. Deterministic scripts do every calculation, the model only does judgement, and it never does arithmetic. The constants live in one dated, sourced file that gets re-checked on a schedule. It is my working answer to the question of where a language model is allowed to be trusted.
 

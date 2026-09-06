@@ -13,6 +13,7 @@ import {
   summary,
   skills,
   roles,
+  projects,
   education,
 } from "../content/resume.ts";
 
@@ -91,6 +92,8 @@ const html = `<!doctype html>
   .blurb { color: #444; }
   .skill-row { margin-bottom: 1.8pt; }
   .edu { display: flex; justify-content: space-between; gap: 10pt; }
+  .proj { margin-bottom: 4pt; page-break-inside: avoid; break-inside: avoid; }
+  .ptech { font-size: 8.4pt; color: #777; }
 </style>
 </head>
 <body>
@@ -140,6 +143,16 @@ ${roles
       .join("\n    ")}
   </ul>
 </div>`
+  )
+  .join("\n")}
+
+<h2>Selected side projects</h2>
+${projects
+  .map(
+    (p) =>
+      `<div class="proj"><strong>${esc(p.name)}</strong> <span class="ptech">(${esc(
+        p.tech
+      )})</span>. ${esc(p.text)}</div>`
   )
   .join("\n")}
 
