@@ -81,20 +81,21 @@ export const roles: Role[] = [
     tech: ["React", "TypeScript", "Astro", "Go", "Ruby", "Terraform"],
     bullets: [
       {
+        label: "Contact flow",
+        text: "kept customers on the brand site they arrived on for the contact step, instead of redirecting them to our main domain. Shipped across the frontend, the backend services and the CDN routing, live on nine domains. Adding another is now configuration rather than a project.",
+      },
+      {
         label: "Feature ownership",
         text: "own customer facing features end to end, from shaping the requirement with product and design through to the rollout and the read on the result.",
       },
       {
+        label: "Design to code",
+        text: "co-own the design to code rollout: design tokens, a Tailwind v4 config and the shared component library out to its consumer apps, sequenced through a tracker I maintain.",
+      },
+      {
         label: "Across the stack",
-        text: "ship in React and Astro on the front, Go and Ruby services behind them, and the infrastructure in front when the problem is there.",
-      },
-      {
-        label: "Contact flow",
-        text: "moved the contact step onto the brand site the visitor started on, so adding a new brand is now a config entry rather than a project.",
-      },
-      {
-        label: "Measurement",
-        text: "own how features get judged, including saying when a result does not hold up yet.",
+        text: "debug and ship in the Go and Ruby services when that is where the problem is, using coding agents to move quickly in code I did not write.",
+        onResume: false,
       },
     ],
   },
@@ -164,6 +165,7 @@ export const roles: Role[] = [
     location: "Berlin, DE",
     start: "Sep 2020",
     end: "Sep 2021",
+    blurb: "Client work for e-commerce sites and small agencies.",
     tech: ["Next.js", "Gatsby", "Sanity"],
     bullets: [
       {
