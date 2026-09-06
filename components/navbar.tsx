@@ -42,6 +42,7 @@ export default function Navbar() {
       <ul className="lowercase text-center flex gap-2 justify-center">
         <Item href="/">About</Item>
         <Item href="/work">Work</Item>
+        <Item href="/craft">Craft</Item>
         <Item href="/projects">Projects</Item>
       </ul>
     </nav>
