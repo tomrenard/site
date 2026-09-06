@@ -52,7 +52,7 @@ const html = `<!doctype html>
 <meta charset="utf-8">
 <title>${esc(profile.name)} - ${esc(profile.title)}</title>
 <style>
-  @page { size: A4; margin: 11mm 13mm; }
+  @page { size: A4; margin: 11mm 16mm; }
   * { box-sizing: border-box; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body {
@@ -72,7 +72,7 @@ const html = `<!doctype html>
     text-transform: uppercase;
     letter-spacing: 0.09em;
     color: #111;
-    border-bottom: 0.6pt solid #ccc;
+    border-bottom: 0.7pt solid #b8b8b8;
     padding-bottom: 2.5pt;
     margin: 9pt 0 4.5pt;
   }
