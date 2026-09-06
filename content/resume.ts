@@ -148,16 +148,6 @@ export const roles: Role[] = [
         text: "extended the core internal JavaScript libraries the other squads built on, with high test coverage and cross-browser support.",
         onResume: false,
       },
-      {
-        label: "Automation",
-        text: "hardened CI/CD and automated testing, which cut production regressions.",
-        onResume: false,
-      },
-      {
-        label: "Reliability",
-        text: "re-architected the API integrations that kept losing data.",
-        onResume: false,
-      },
     ],
   },
   {
