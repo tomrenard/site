@@ -8,7 +8,6 @@ import cn from "clsx";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { WavyBackground } from "@/components/wavy-background";
-import { CustomCursor } from "@/components/custom-cursor";
 import "./globals.css";
 
 const SITE_URL = "https://tomrenard.site";
@@ -96,7 +95,6 @@ export default function RootLayout({
           containerClassName="fixed inset-0 z-0 pointer-events-none opacity-50"
           backgroundFill="#fff8f5"
         />
-        <CustomCursor />
         <div className="fixed h-6 sm:h-10 md:h-14 w-full top-0 left-0 z-30 pointer-events-none content-fade-out" />
         <div className="flex flex-col items-center relative z-10">
           <Navbar />
