@@ -84,6 +84,8 @@ const html = `<!doctype html>
   .role-title { font-size: 10.2pt; color: #444; margin: 1pt 0 4pt; }
   .contact { font-size: 9pt; color: #555; }
   .contact span + span::before { content: " • "; color: #aaa; }
+  /* Section spacing is load-bearing: the page has no headroom left, and loosening
+     it pushes the resume to two pages. The page count assert below catches it. */
   h2 {
     font-size: 8.6pt;
     text-transform: uppercase;

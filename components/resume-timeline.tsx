@@ -18,16 +18,16 @@ export function ResumeTimeline() {
           </p>
           {role.blurb && <p className="mt-2">{role.blurb}</p>}
           {role.bullets?.length ? (
-          <ul className="mt-3 list-disc list-outside marker:text-neutral-400 pl-5">
-            {role.bullets.map((b) => (
-              <li key={b.text} className="pl-1.5">
-                {b.label && (
-                  <strong className="font-semibold">{b.label}: </strong>
-                )}
-                {b.text}
-              </li>
-            ))}
-          </ul>
+            <ul className="mt-3 list-disc list-outside marker:text-neutral-400 pl-5">
+              {role.bullets.map((b) => (
+                <li key={b.text} className="pl-1.5">
+                  {b.label && (
+                    <strong className="font-semibold">{b.label}: </strong>
+                  )}
+                  {b.text}
+                </li>
+              ))}
+            </ul>
           ) : null}
           </section>
         </Fragment>
