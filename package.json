@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build --turbo",
     "start": "next start",
-    "lint": "next lint"
+    "resume": "node --no-warnings=MODULE_TYPELESS_PACKAGE_JSON scripts/build-resume.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
