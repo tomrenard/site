@@ -1,11 +1,14 @@
+import { Fragment } from "react";
+
 import { roles, education } from "@/content/resume";
 
 export function ResumeTimeline() {
   return (
     <>
       {roles.map((role, i) => (
-        <section key={role.company}>
+        <Fragment key={role.company}>
           {i > 0 && <hr className="my-8 w-16 border-neutral-200" />}
+          <section>
           <h2 className="font-semibold mt-6 mb-2 text-neutral-900 text-balance first:mt-0">
             {role.company}, {role.title}
           </h2>
@@ -16,12 +19,15 @@ export function ResumeTimeline() {
           <ul className="mt-3 list-disc list-outside marker:text-neutral-400 pl-5">
             {role.bullets.map((b) => (
               <li key={b.text} className="pl-1.5">
-                {b.label && <strong className="font-semibold">{b.label}:</strong>}{" "}
+                {b.label && (
+                  <strong className="font-semibold">{b.label}: </strong>
+                )}
                 {b.text}
               </li>
             ))}
           </ul>
-        </section>
+          </section>
+        </Fragment>
       ))}
       <h2 className="font-semibold mt-8 mb-4 text-neutral-900 text-balance">
         Before that
@@ -30,7 +36,7 @@ export function ResumeTimeline() {
         {education.map((e, i) => (
           <span key={e.what}>
             {i > 0 && " "}
-            {e.what}, {e.where} ({e.year}).
+            {e.what} at {e.where} ({e.year}).
           </span>
         ))}
       </p>

@@ -134,10 +134,7 @@ export const components: Record<
   a: ({ href, ...props }) => {
     return (
       <Link
-        className="break-words decoration-from-font underline underline-offset-2 decoration-neutral-300 hover:decoration-neutral-600 focus-visible:outline focus-visible:outline-neutral-400
-        focus-visible:rounded-xs 
-        focus-visible:outline-offset-1
-        focus-visible:outline-dotted"
+        className="break-words decoration-from-font underline underline-offset-2 decoration-neutral-400 hover:decoration-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neutral-900 focus-visible:outline-offset-2 focus-visible:rounded-xs"
         href={href}
         draggable={false}
         {...(href?.startsWith("https://")

@@ -49,13 +49,13 @@ export const skills: SkillGroup[] = [
       "Next.js (App Router, RSC)",
       "Astro",
       "Tailwind CSS",
-      "GraphQL",
       "WCAG 2.2",
     ],
   },
   {
     name: "Platform",
     items: [
+      "GraphQL",
       "Postgres",
       "Terraform",
       "CloudFront",
@@ -113,7 +113,7 @@ export const roles: Role[] = [
       },
       {
         label: "Core flow",
-        text: "reworked the participation flow, worth 5% more completed polls across millions of monthly users.",
+        text: "reworked the participation flow, which lifted completed polls by 5% across millions of monthly users.",
       },
       {
         label: "Next.js migration",
@@ -195,6 +195,6 @@ export const projects = [
 ];
 
 export const education = [
-  { what: "Full-Stack Web Development", where: "Le Wagon, Berlin", year: "2020" },
+  { what: "Full Stack Web Development", where: "Le Wagon, Berlin", year: "2020" },
   { what: "Master in Management", where: "EM Normandie", year: "2018" },
 ];

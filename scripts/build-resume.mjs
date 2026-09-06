@@ -3,7 +3,14 @@
 // Run with: pnpm resume
 
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, writeFileSync, copyFileSync, existsSync } from "node:fs";
+import {
+  mkdtempSync,
+  writeFileSync,
+  copyFileSync,
+  existsSync,
+  readFileSync,
+  rmSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -31,7 +38,12 @@ const CHROME_CANDIDATES = [
 
 function findChrome() {
   const fromEnv = process.env.CHROME_PATH;
-  if (fromEnv && existsSync(fromEnv)) return fromEnv;
+  if (fromEnv) {
+    if (!existsSync(fromEnv)) {
+      throw new Error(`CHROME_PATH is set to ${fromEnv}, which does not exist.`);
+    }
+    return fromEnv;
+  }
   const found = CHROME_CANDIDATES.find((p) => existsSync(p));
   if (!found) {
     throw new Error(
@@ -42,7 +54,12 @@ function findChrome() {
 }
 
 const esc = (s) =>
-  String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 
 const dateRange = (r) => `${r.start} to ${r.end === "now" ? "Present" : r.end}`;
 
@@ -102,9 +119,12 @@ const html = `<!doctype html>
   <h1>${esc(profile.name)}</h1>
   <div class="role-title">${esc(profile.title)}</div>
   <div class="contact">
-    <span>${esc(profile.email)}</span><span>${esc(profile.site)}</span><span>${esc(
-      profile.github
-    )}</span><span>${esc(profile.location)}</span>
+    <span><a href="mailto:${esc(profile.email)}">${esc(profile.email)}</a></span
+    ><span><a href="https://${esc(profile.site)}">${esc(profile.site)}</a></span
+    ><span><a href="https://${esc(profile.github)}">${esc(profile.github)}</a></span
+    ><span><a href="https://${esc(profile.linkedin)}">${esc(
+      profile.linkedin
+    )}</a></span><span>${esc(profile.location)}</span>
   </div>
 </header>
 
@@ -175,21 +195,38 @@ const pdfPath = join(work, "resume.pdf");
 writeFileSync(htmlPath, html, "utf8");
 
 const chrome = findChrome();
-execFileSync(
-  chrome,
-  [
-    "--headless",
-    "--disable-gpu",
-    "--no-pdf-header-footer",
-    `--print-to-pdf=${pdfPath}`,
-    `file://${htmlPath}`,
-  ],
-  { stdio: "pipe" }
-);
+try {
+  execFileSync(
+    chrome,
+    [
+      "--headless",
+      "--disable-gpu",
+      "--no-pdf-header-footer",
+      `--print-to-pdf=${pdfPath}`,
+      `file://${htmlPath}`,
+    ],
+    { stdio: "pipe" }
+  );
+} catch (err) {
+  const detail = err.stderr ? `\n${err.stderr.toString().trim()}` : "";
+  throw new Error(`Chrome failed to print the PDF.${detail}`);
+}
 
 if (!existsSync(pdfPath)) {
   throw new Error(`Chrome did not produce a PDF. HTML kept at ${htmlPath}`);
 }
 
+const pdf = readFileSync(pdfPath);
+const pageCount = (pdf.toString("latin1").match(/\/Type\s*\/Page[^s]/g) || [])
+  .length;
+if (pageCount !== 1) {
+  throw new Error(
+    `Expected a one page resume, got ${pageCount}. The layout runs close to ` +
+      `full, so something was added. Trim content or set onResume: false on a ` +
+      `bullet in content/resume.ts. HTML kept at ${htmlPath}`
+  );
+}
+
 copyFileSync(pdfPath, OUT);
-console.log(`Wrote ${OUT}`);
+rmSync(work, { recursive: true, force: true });
+console.log(`Wrote ${OUT} (1 page)`);
