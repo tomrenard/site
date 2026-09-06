@@ -91,7 +91,7 @@ const html = `<!doctype html>
     color: #111;
     border-bottom: 0.7pt solid #b8b8b8;
     padding-bottom: 2.5pt;
-    margin: 9pt 0 4.5pt;
+    margin: 8pt 0 4pt;
   }
   p { margin: 0 0 4pt; }
   ul { margin: 3pt 0 0; padding-left: 13pt; }
@@ -149,9 +149,11 @@ ${roles
     <strong>${esc(r.company)} | ${esc(r.title)}</strong>
     <span class="when">${esc(r.location)} | ${esc(dateRange(r))}</span>
   </div>
-  <div class="tech">${esc(r.tech.join(" • "))}</div>
+  ${r.tech?.length ? `<div class="tech">${esc(r.tech.join(" • "))}</div>` : ""}
   ${r.blurb ? `<p class="blurb">${esc(r.blurb)}</p>` : ""}
-  <ul>
+  ${
+    r.bullets?.some((b) => b.onResume !== false)
+      ? `<ul>
     ${r.bullets
       .filter((b) => b.onResume !== false)
       .map(
@@ -161,7 +163,9 @@ ${roles
           )}</li>`
       )
       .join("\n    ")}
-  </ul>
+  </ul>`
+      : ""
+  }
 </div>`
   )
   .join("\n")}

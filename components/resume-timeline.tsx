@@ -13,9 +13,11 @@ export function ResumeTimeline() {
             {role.company}, {role.title}
           </h2>
           <p className="mt-1 mb-3 text-sm text-neutral-500 tracking-wide">
-            {role.location}, {role.start} to {role.end} · {role.tech.join(" • ")}
+            {role.location}, {role.start} to {role.end}
+            {role.tech?.length ? ` · ${role.tech.join(" • ")}` : ""}
           </p>
           {role.blurb && <p className="mt-2">{role.blurb}</p>}
+          {role.bullets?.length ? (
           <ul className="mt-3 list-disc list-outside marker:text-neutral-400 pl-5">
             {role.bullets.map((b) => (
               <li key={b.text} className="pl-1.5">
@@ -26,11 +28,12 @@ export function ResumeTimeline() {
               </li>
             ))}
           </ul>
+          ) : null}
           </section>
         </Fragment>
       ))}
       <h2 className="font-semibold mt-8 mb-4 text-neutral-900 text-balance">
-        Before that
+        Education
       </h2>
       <p className="mt-2">
         {education.map((e, i) => (

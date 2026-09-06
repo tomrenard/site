@@ -18,8 +18,8 @@ export interface Role {
   /** "now" renders as Present on the resume. */
   end: string;
   blurb?: string;
-  tech: string[];
-  bullets: Bullet[];
+  tech?: string[];
+  bullets?: Bullet[];
 }
 
 export interface SkillGroup {
@@ -82,7 +82,7 @@ export const roles: Role[] = [
     bullets: [
       {
         label: "Contact flow",
-        text: "kept customers on the brand site they arrived on for the contact step, instead of redirecting them to our main domain. Shipped across the frontend, the backend services and the CDN routing, live on nine domains. Adding another is now configuration rather than a project.",
+        text: "kept customers on the brand site they arrived on for the contact step instead of redirecting them to our main domain. Shipped across frontend, backend services and CDN routing, live on nine domains. Adding another is now configuration, not a project.",
       },
       {
         label: "Feature ownership",
@@ -123,7 +123,6 @@ export const roles: Role[] = [
       {
         label: "Testing stack",
         text: "migrated to Vitest and Playwright, cutting CI pipeline duration by 40%.",
-        onResume: false,
       },
       {
         label: "Accessibility",
@@ -135,7 +134,7 @@ export const roles: Role[] = [
     company: "Aklamio",
     title: "Frontend Engineer",
     location: "Berlin, DE",
-    start: "Jun 2021",
+    start: "Sep 2021",
     end: "Mar 2023",
     blurb: "Referral platform for enterprise clients, 100k+ monthly users.",
     tech: ["React", "TypeScript", "Redux"],
@@ -147,6 +146,7 @@ export const roles: Role[] = [
       {
         label: "Internal tooling",
         text: "extended the core internal JavaScript libraries the other squads built on, with high test coverage and cross-browser support.",
+        onResume: false,
       },
       {
         label: "Automation",
@@ -156,12 +156,13 @@ export const roles: Role[] = [
       {
         label: "Reliability",
         text: "re-architected the API integrations that kept losing data.",
+        onResume: false,
       },
     ],
   },
   {
     company: "Freelance",
-    title: "Full Stack Engineer",
+    title: "Full Stack / Frontend Engineer",
     location: "Berlin, DE",
     start: "Sep 2020",
     end: "Sep 2021",
@@ -176,6 +177,15 @@ export const roles: Role[] = [
         onResume: false,
       },
     ],
+  },
+  {
+    company: "N26",
+    title: "Web Content Specialist",
+    location: "Berlin, DE",
+    start: "Jan 2019",
+    end: "Jun 2020",
+    blurb:
+      "Web content and user flows for the digital banking product. The conversion funnels, before I was the one building them.",
   },
 ];
 
