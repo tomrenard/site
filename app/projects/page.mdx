@@ -65,11 +65,37 @@ The README opens with a cost table, and further down it concedes the thing a REA
 
 ### Portulan
 
-<TechTags>Product work, no code yet</TechTags>
+<TechTags>Next.js • TypeScript • Postgres (Neon) • Vercel</TechTags>
 
-A quote and proposal tool for small French travel agencies. Pre-discovery, with nothing built yet. It ends in a go or stop gate based on how many custom quotes the design partner actually produces a month. Writing code to find that out would be the expensive way round.
+A quote and proposal tool for small French travel agencies. One structured trip produces the margin sheet, the branded PDF and the client's trip page. It is live, with a first agency using it and a self-serve free trial.
+
+The success bar was set by the design partner, not by me: a real quote sent without Word, then a second trip built from a hotel she described in the first. The AI features follow the same rule. A supplier email read into cost lines, or a hotel filled from its own web page, is a draft she rereads before anything is saved, and the client's contact details are taken out of a supplier email before it goes to a model.
 
 ## Also
+
+### merk
+
+<TechTags>Next.js • Postgres (Neon) • Drizzle • Better Auth • FSRS</TechTags>
+
+A language course and flashcard app I use to learn German (A1 to B2) and Moroccan Darija, installable on a phone. Lessons, part exams, Goethe-style level exams and a placement test, with around 4,600 German words scheduled by FSRS.
+
+The AI teacher gives feedback on writing and spoken answers, but it is fenced in: daily limits per person, a cache, a monthly budget on the gateway, and a fallback to marking yourself when it is off. Every lesson sentence is recorded once and served as static files, so audio costs nothing per play.
+
+[merk on GitHub](https://github.com/tomrenard/merk)
+
+---
+
+### vo2
+
+<TechTags>Next.js • Postgres (Neon) • FSRS • Crossref</TechTags>
+
+Endurance sports science (running, cycling, triathlon) at master's depth, learned one multiple-choice question at a time. Early: the format and the first module are being built.
+
+There is no AI in the app, and every key claim has to carry a source and an evidence grade. A check fails if a cited DOI does not exist in Crossref or a claim has no source. You also say how sure you are when you answer, and confident wrong answers come back first.
+
+[vo2 on GitHub](https://github.com/tomrenard/vo2)
+
+---
 
 ### EuroLens
 
