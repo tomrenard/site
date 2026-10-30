@@ -34,7 +34,7 @@ export function Scramble({ children }: { children: string }) {
       <span className="invisible">{children}</span>
       <span
         aria-hidden
-        className="absolute inset-0 overflow-clip whitespace-nowrap"
+        className="absolute inset-0 overflow-clip whitespace-nowrap [overflow-clip-margin:3px]"
       >
         {shown}
       </span>
@@ -123,4 +123,31 @@ export function Cursor() {
       <span>{label}</span>
     </div>
   );
+}
+
+// Counts from 0 to the value once it scrolls into view. Server HTML holds the real value.
+export function CountUp({ value }: { value: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const el = ref.current!;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    el.textContent = "0";
+    let raf = 0;
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      io.disconnect();
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min((now - start) / 1600, 1);
+        el.textContent = String(Math.round(value * (1 - (1 - t) ** 4)));
+        if (t < 1) raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+    }, { threshold: 0.6 });
+    io.observe(el);
+    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+  }, [value]);
+
+  return <span ref={ref}>{value}</span>;
 }

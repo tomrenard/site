@@ -24,16 +24,16 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 120, fontWeight: 500, letterSpacing: "-0.05em", lineHeight: 0.9 }}>
             Tom Renard
           </div>
-          <div style={{ fontSize: 40, color: "#6b6965" }}>
+          <div style={{ fontSize: 40, color: "#5f5d59" }}>
             Senior Product Engineer
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div style={{ fontSize: 28, color: "#6b6965", maxWidth: "900px" }}>
+          <div style={{ fontSize: 28, color: "#5f5d59", maxWidth: "900px" }}>
             Frontend deep. Ships across the stack. Owns the outcome after the
             ship.
           </div>
-          <div style={{ fontSize: 24, color: "#6b6965" }}>tomrenard.site</div>
+          <div style={{ fontSize: 24, color: "#5f5d59" }}>tomrenard.site</div>
         </div>
       </div>
     ),

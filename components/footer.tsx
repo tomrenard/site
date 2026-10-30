@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Check, Copy, Download, ExternalLink } from "lucide-react";
 import { Scramble } from "@/components/motion";
 
@@ -27,28 +26,16 @@ export default function Footer() {
             className="link flex w-fit items-center gap-1.5 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink cursor-pointer"
           >
             <Scramble key={copied ? "c" : "e"}>{copied ? "Copied" : "Copy email"}</Scramble>
-            <AnimatePresence mode="wait">
+            <span key={copied ? "check" : "copy"} className="icon-pop">
               {copied ? (
-                <motion.span
-                  key="check"
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.5, opacity: 0 }}
-                  className="text-accent"
-                >
-                  <Check className="w-3 h-3" />
-                </motion.span>
+                <Check className="w-3 h-3 text-accent" />
               ) : (
-                <motion.span
-                  key="copy"
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.5, opacity: 0 }}
-                >
-                  <Copy className="w-3 h-3" />
-                </motion.span>
+                <Copy className="w-3 h-3" />
               )}
-            </AnimatePresence>
+            </span>
+            <span className="sr-only" aria-live="polite">
+              {copied ? "Email copied" : ""}
+            </span>
           </button>
           <a
             href="https://www.linkedin.com/in/tom-renard-2021/"

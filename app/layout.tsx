@@ -65,6 +65,8 @@ const personSchema = {
     "Product engineering",
     "Web performance",
     "Web accessibility",
+    "AI-assisted software engineering",
+    "Claude Code",
   ],
   sameAs: [
     "https://github.com/tomrenard",
@@ -84,7 +86,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={cn(sans.variable, "overflow-x-hidden touch-manipulation")}
     >
       <body

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { CountUp } from "@/components/motion";
 
 // A page row: full-width rule, label in the left third, body in the right two thirds.
 export function Section({
@@ -58,11 +59,8 @@ export function Stats({ items }: { items: { value: number; label: string }[] }) 
       {items.map((s) => (
         <div key={s.label} className="border-t border-faint pt-4">
           <dt className="sr-only">{s.label}</dt>
-          <dd
-            className="count text-6xl leading-none font-medium tracking-[-0.04em] tabular-nums lg:text-7xl"
-            style={{ "--to": s.value } as React.CSSProperties}
-          >
-            <span className="sr-only">{s.value}</span>
+          <dd className="text-6xl leading-none font-medium tracking-[-0.04em] tabular-nums lg:text-7xl">
+            <CountUp value={s.value} />
           </dd>
           <dd aria-hidden className="mt-3 text-sm leading-5 text-mute">
             {s.label}
