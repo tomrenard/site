@@ -18,7 +18,7 @@ export function ResumeTimeline() {
             </>
           }
         >
-          <h2 className="mb-1 text-2xl leading-8 font-medium tracking-[-0.03em] text-balance">
+          <h2 className="mb-1 text-2xl leading-7 font-medium tracking-[-0.03em] text-balance">
             {role.company}, {role.title}
           </h2>
           {role.tech?.length ? (

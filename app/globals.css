@@ -16,6 +16,34 @@
   --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+/* Page gutter and the big vertical step (hero and footer), per breakpoint. */
+:root {
+  --gutter: 1rem;
+  --space-xl: 3rem;
+}
+@media (min-width: 640px) {
+  :root { --gutter: 1.5rem; }
+}
+@media (min-width: 768px) {
+  :root { --gutter: 2.5rem; }
+}
+@media (min-width: 1024px) {
+  :root { --space-xl: 6rem; }
+}
+
+/* Hero: trim each block to cap height and baseline so margins are the visible gaps. */
+article > h1 {
+  margin-top: var(--space-xl);
+  margin-bottom: calc(var(--space-xl) * 0.75);
+}
+.lead {
+  margin-bottom: var(--space-xl);
+}
+article > h1,
+.lead {
+  text-box: trim-both cap alphabetic;
+}
+
 /* One grid for header, sections and footer: 4 columns on phones, 12 from lg. */
 .grid-page {
   display: grid;
@@ -45,13 +73,28 @@ main {
 /* Section: full-width rule on top, label in columns 1 to 4, body in 5 to 12. */
 .section {
   position: relative;
-  padding-top: 1.5rem;
-  padding-bottom: 4rem;
+  padding-block: 3rem;
 }
 @media (min-width: 1024px) {
   .section {
-    padding-bottom: 6rem;
+    padding-block: 4.5rem;
   }
+}
+/* Trim the first and last text to cap height and baseline: padding is the visible gap. */
+.section-label > *,
+.section-label::before {
+  text-box: trim-both cap alphabetic;
+}
+.section-body > :first-child {
+  text-box-trim: trim-start;
+  text-box-edge: cap alphabetic;
+}
+.section-body > :last-child {
+  text-box-trim: trim-end;
+  text-box-edge: cap alphabetic;
+}
+.section-body > :only-child {
+  text-box-trim: trim-both;
 }
 .section::before {
   content: "";
@@ -145,6 +188,10 @@ h1 .word > span {
   margin-left: -0.0227em;
   padding-top: 0.04em;
   white-space: nowrap;
+  /* Offsets fitted from measurements at 390 and 1512px: cap sits --space-xl
+     below the links, baseline sits one gutter above the page end. */
+  margin-top: calc(var(--space-xl) - 4.87px - 0.0738em);
+  padding-bottom: calc(var(--gutter) - 0.0376em);
 }
 .wordmark .ch {
   display: inline-block;
@@ -183,6 +230,9 @@ a:focus-visible .roll > span {
 .marquee > div {
   display: flex;
   flex-shrink: 0;
+}
+.marquee span span:first-child {
+  text-box: trim-both cap alphabetic;
 }
 
 /* ---------- Motion. Everything below is off for prefers-reduced-motion. ---------- */

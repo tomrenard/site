@@ -88,7 +88,7 @@ export default function RootLayout({
     >
       <body
         className={cn(
-          "w-full px-4 sm:px-6 md:px-10",
+          "w-full px-(--gutter)",
           "text-[15px] leading-6 md:text-base md:leading-7",
           "text-ink antialiased"
         )}

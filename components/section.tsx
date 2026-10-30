@@ -12,7 +12,7 @@ export function Section({
 }) {
   const label = title ? (
     <h2 className="section-label col-span-4 mb-6 lg:mb-0 text-lg leading-7 font-medium tracking-[-0.01em] text-balance">
-      {title}
+      <span>{title}</span>
     </h2>
   ) : aside ? (
     <div className="section-label col-span-4 mb-6 lg:mb-0 text-lg leading-7 font-medium tracking-[-0.01em]">
@@ -43,7 +43,7 @@ export function Marquee({ items }: { items: string[] }) {
   );
   return (
     <div aria-hidden className="border-t border-rule">
-      <div className="marquee -mx-4 py-8 text-5xl leading-none font-medium tracking-[-0.04em] sm:-mx-6 md:-mx-10 lg:py-12 lg:text-8xl">
+      <div className="marquee -mx-(--gutter) py-12 text-5xl leading-none font-medium tracking-[-0.04em] lg:py-18 lg:text-8xl">
         {row}
         {row}
       </div>

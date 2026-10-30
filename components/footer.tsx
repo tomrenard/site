@@ -15,7 +15,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-rule pt-3 pb-4 text-sm leading-5 lg:pb-6">
+    <footer className="border-t border-rule pt-[11px] text-sm leading-5">
       <div className="grid-page gap-y-2">
         <p className="col-span-4 text-mute">Contact</p>
         <div className="col-span-4 flex flex-wrap gap-x-6 gap-y-2 lg:col-span-8">
@@ -66,7 +66,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <p aria-hidden className="wordmark mt-16 font-medium lg:mt-24">
+      <p aria-hidden className="wordmark font-medium">
         <span>
           {[..."Tom Renard"].map((ch, i) => (
             <span

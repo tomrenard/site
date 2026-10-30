@@ -68,7 +68,7 @@ interface LeadProps {
 
 function Lead({ children }: LeadProps) {
   return (
-    <div className="lead mb-16 max-w-5xl text-2xl leading-[1.15] tracking-[-0.025em] text-balance md:text-4xl lg:mb-24 [&_p]:m-0">
+    <div className="lead max-w-5xl text-2xl leading-[1.15] tracking-[-0.025em] text-balance md:text-4xl [&_p]:m-0">
       {children}
     </div>
   );
@@ -119,7 +119,7 @@ export const components: Record<
   StackItem,
   h1: (props) => (
     <h1
-      className="mt-12 mb-8 text-[clamp(3rem,11vw,10rem)] font-medium leading-[0.88] tracking-[-0.05em] text-balance lg:mt-20 lg:mb-10"
+      className="text-[clamp(3rem,11vw,10rem)] font-medium leading-[0.88] tracking-[-0.05em] text-balance"
       {...props}
     >
       {typeof props.children === "string" ? (
