@@ -39,7 +39,7 @@ function Item({ href, label }: { href: string; label: string }) {
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-30 bg-paper text-sm leading-5">
+    <header className="sticky top-0 -mx-[calc(50vw-50%)] px-[calc(50vw-50%)] z-30 bg-paper text-sm leading-5">
       <div className="grid-page gap-y-2 py-3">
         <Link
           href="/"
