@@ -118,8 +118,12 @@ main {
 .section-body > :first-child {
   margin-top: 0;
 }
+/* Full-bleed article so the page-change panel spans the screen, not just the text column. */
 article {
   counter-reset: section;
+  display: flow-root; /* keeps the title's top margin inside, so the panel starts under the header */
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc(50vw - 50%);
 }
 
 /* Text link: a thin grey line, an accent line draws over it on hover. */
@@ -164,11 +168,13 @@ pre code {
 /* ---------- Motion pieces that are safe without animation ---------- */
 
 /* Masks for the word reveal; padding keeps descenders from being clipped. */
+/* Mask is 0.1em bigger than the word on every side (tracking pushes the last
+   letter past the box, accents rise above it); negative margins keep layout. */
 h1 .word {
   display: inline-block;
   overflow: hidden;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
+  padding: 0.1em 0.1em 0.14em;
+  margin: -0.1em -0.1em -0.14em;
   vertical-align: top;
 }
 h1 .word > span {

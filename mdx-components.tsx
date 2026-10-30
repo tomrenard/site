@@ -122,7 +122,7 @@ export const components: Record<
   StackItem,
   h1: (props) => (
     <h1
-      className="text-[clamp(3rem,11vw,10rem)] font-medium leading-[1] tracking-[-0.05em] text-balance"
+      className="text-[clamp(3rem,11vw,10rem)] font-medium leading-[1] tracking-[-0.04em] text-balance"
       {...props}
     >
       {typeof props.children === "string" ? (
