@@ -15,11 +15,10 @@ interface ButtonProps {
 function Button({ href, variant = "primary", children }: ButtonProps) {
   const isExternal = href.startsWith("https://");
   const baseStyles =
-    "inline-flex items-center justify-center px-5 h-9 text-sm font-medium rounded-full transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 [&_p]:m-0";
+    "inline-flex items-center justify-center px-5 h-9 text-sm font-medium rounded-full border border-ink transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink [&_p]:m-0";
   const variants: Record<ButtonVariant, string> = {
-    primary: "bg-neutral-900 text-white hover:bg-neutral-700",
-    secondary:
-      "text-neutral-600 border border-neutral-300 hover:border-neutral-400 hover:text-neutral-900",
+    primary: "bg-ink text-paper hover:bg-accent hover:border-accent",
+    secondary: "text-ink hover:bg-ink hover:text-paper",
   };
 
   return (
@@ -56,7 +55,7 @@ interface TechTagsProps {
 
 function TechTags({ children }: TechTagsProps) {
   return (
-    <p className="mt-1 mb-3 text-sm text-neutral-500 tracking-wide">
+    <p className="mt-1 mb-3 text-sm text-mute">
       {children}
     </p>
   );
@@ -67,7 +66,11 @@ interface LeadProps {
 }
 
 function Lead({ children }: LeadProps) {
-  return <div className="mt-3 text-neutral-600 leading-relaxed">{children}</div>;
+  return (
+    <div className="lead mb-16 max-w-5xl text-2xl leading-tight tracking-[-0.02em] text-balance md:text-4xl [&_p]:m-0">
+      {children}
+    </div>
+  );
 }
 
 interface StackListProps {
@@ -76,7 +79,7 @@ interface StackListProps {
 
 function StackList({ children }: StackListProps) {
   return (
-    <ul className="mt-4 space-y-0.5 list-disc list-outside marker:text-neutral-400 pl-5">
+    <ul className="mt-4 space-y-0.5 list-disc list-outside marker:text-mute pl-5">
       {children}
     </ul>
   );
@@ -102,31 +105,31 @@ export const components: Record<
   StackItem,
   h1: (props) => (
     <h1
-      className="font-semibold mb-7 text-neutral-900 text-balance"
+      className="mt-10 mb-6 text-[clamp(3rem,11vw,10rem)] font-medium leading-[0.88] tracking-[-0.05em] text-balance md:mt-16"
       {...props}
     />
   ),
   h2: (props) => (
     <h2
-      className="font-semibold mt-8 mb-4 text-neutral-900 text-balance"
+      className="mt-16 mb-4 pt-4 border-t border-rule text-lg font-medium leading-snug tracking-[-0.01em] text-balance lg:mb-0 lg:pt-0 lg:border-0"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
-      className="font-semibold mt-6 mb-2 text-neutral-900 text-balance first:mt-0"
+      className="mt-10 mb-1 text-2xl font-medium tracking-[-0.03em] text-balance first:mt-0 [h2+&]:mt-4"
       {...props}
     />
   ),
   ul: (props) => (
     <ul
-      className="mt-3 list-disc list-outside marker:text-neutral-400 pl-5"
+      className="mt-3 list-disc list-outside marker:text-mute pl-5"
       {...props}
     />
   ),
   ol: (props) => (
     <ol
-      className="mt-7 list-decimal list-outside marker:text-neutral-400 pl-5"
+      className="mt-7 list-decimal list-outside marker:text-mute pl-5"
       {...props}
     />
   ),
@@ -134,7 +137,7 @@ export const components: Record<
   a: ({ href, ...props }) => {
     return (
       <Link
-        className="break-words decoration-from-font underline underline-offset-2 decoration-neutral-400 hover:decoration-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neutral-900 focus-visible:outline-offset-2 focus-visible:rounded-xs"
+        className="break-words decoration-from-font underline underline-offset-2 decoration-mute hover:decoration-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2 focus-visible:rounded-xs"
         href={href}
         draggable={false}
         {...(href?.startsWith("https://")
@@ -147,11 +150,11 @@ export const components: Record<
       />
     );
   },
-  strong: (props) => <strong className="font-semibold" {...props} />,
+  strong: (props) => <strong className="font-medium" {...props} />,
   p: (props) => <p className="mt-2" {...props} />,
   blockquote: (props) => (
     <blockquote
-      className="pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-neutral-500"
+      className="pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-mute"
       {...props}
     />
   ),
@@ -189,7 +192,7 @@ export const components: Record<
 
     return img;
   },
-  hr: (props) => <hr className="my-8 w-16 border-neutral-200" {...props} />,
+  hr: (props) => <hr className="my-10 border-rule/20" {...props} />,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {

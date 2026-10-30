@@ -4,47 +4,62 @@ import cn from "clsx";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-function Item(props: React.ComponentProps<typeof Link>) {
+const links = [
+  { href: "/", label: "About" },
+  { href: "/work", label: "Work" },
+  { href: "/craft", label: "Craft" },
+  { href: "/projects", label: "Projects" },
+];
+
+function Item({ href, label }: { href: string; label: string }) {
   const pathname = usePathname();
-  const href = props.href;
-
-  if (typeof href !== "string") {
-    throw new Error("`href` must be a string");
-  }
-
-  const isActive = pathname === href || pathname.startsWith(href + "/");
+  const isActive =
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <li
-      className={cn(
-        isActive
-          ? "text-neutral-900"
-          : "text-neutral-400 hover:text-neutral-700",
-        "transition-colors hover:transform-none",
-        "-mx-2"
-      )}
-    >
+    <li className="flex items-center">
       <Link
-        {...props}
-        className="inline-block w-full px-2 focus-visible:outline focus-visible:outline-neutral-400
-        focus-visible:rounded-xs 
-        focus-visible:outline-dotted
-        focus-visible:text-neutral-600"
+        href={href}
+        aria-current={isActive ? "page" : undefined}
+        className={cn(
+          "inline-flex items-center gap-1.5 transition-colors",
+          "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink",
+          isActive ? "text-ink" : "text-mute hover:text-ink"
+        )}
         draggable={false}
-      />
+      >
+        {isActive && <span aria-hidden className="size-2 bg-accent" />}
+        {label}
+      </Link>
     </li>
   );
 }
 
 export default function Navbar() {
   return (
-    <nav className="w-full mb-4">
-      <ul className="lowercase text-center flex gap-2 justify-center">
-        <Item href="/">About</Item>
-        <Item href="/work">Work</Item>
-        <Item href="/craft">Craft</Item>
-        <Item href="/projects">Projects</Item>
-      </ul>
-    </nav>
+    <header className="sticky top-0 z-30 bg-paper pt-3 text-sm">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-1 pb-2 lg:grid-cols-4">
+        <Link
+          href="/"
+          className="flex items-center gap-1.5 font-medium"
+          draggable={false}
+        >
+          <span aria-hidden className="size-2.5 bg-ink" />
+          Tom Renard
+        </Link>
+        <nav className="col-span-2 row-start-2 lg:col-span-1 lg:row-start-auto">
+          <ul className="flex gap-4">
+            {links.map((l) => (
+              <Item key={l.href} {...l} />
+            ))}
+          </ul>
+        </nav>
+        <p className="hidden text-mute lg:block">
+          Senior Product Engineer [Berlin]
+        </p>
+        <p className="text-right text-mute">©{new Date().getFullYear()}</p>
+      </div>
+      <div className="h-px bg-rule" />
+    </header>
   );
 }

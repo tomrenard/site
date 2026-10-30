@@ -15,18 +15,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full mx-auto py-10 flex flex-col md:flex-row justify-between items-center gap-6 text-neutral-500 font-[family-name:var(--font-family-sans)] tracking-[-0.006em]">
-      <div className="w-full h-px opacity-50 bg-neutral-200 mix-blend-multiply absolute top-0 left-0" />
-      <div className="flex items-center gap-4">
-        <p className="text-sm font-normal">© {new Date().getFullYear()}</p>
-      </div>
-
-      <div className="flex items-center gap-2">
+    <footer className="border-t border-rule pt-3 pb-8 text-sm">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-4">
+        <p className="text-mute">Contact</p>
         <button
           onClick={handleCopyEmail}
-          className="group relative flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium hover:bg-neutral-100 border border-neutral-200 rounded-full transition-colors cursor-pointer font-[family-name:var(--font-family-sans)] tracking-[-0.006em]"
+          className="group relative cursor-pointer flex w-fit items-center gap-1.5 underline decoration-1 underline-offset-4 hover:decoration-accent focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
-          <span>{copied ? "Copied!" : "Email me"}</span>
+          <span>{copied ? "Copied" : "Copy email"}</span>
           <AnimatePresence mode="wait">
             {copied ? (
               <motion.span
@@ -34,7 +30,7 @@ export default function Footer() {
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.5, opacity: 0 }}
-                className="text-green-600"
+                className="text-accent"
               >
                 <Check className="w-3 h-3" />
               </motion.span>
@@ -54,7 +50,7 @@ export default function Footer() {
           href="https://www.linkedin.com/in/tom-renard-2021/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium hover:bg-neutral-100 border border-neutral-200 rounded-full transition-colors font-[family-name:var(--font-family-sans)] tracking-[-0.006em]"
+          className="flex w-fit items-center gap-1.5 underline decoration-1 underline-offset-4 hover:decoration-accent focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
           LinkedIn
           <ExternalLink className="w-3 h-3" />
@@ -62,7 +58,7 @@ export default function Footer() {
         <a
           href="/Tom_Renard_Resume.pdf"
           download
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium hover:bg-neutral-100 border border-neutral-200 rounded-full transition-colors font-[family-name:var(--font-family-sans)] tracking-[-0.006em]"
+          className="flex w-fit items-center gap-1.5 underline decoration-1 underline-offset-4 hover:decoration-accent focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
           Resume
           <Download className="w-3 h-3" />

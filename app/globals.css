@@ -2,47 +2,82 @@
 @source "../mdx-components.tsx";
 
 @theme {
-  --font-family-sans: Helvetica, "Helvetica Neue", Arial, sans-serif;
-  --font-family-serif: Helvetica, "Helvetica Neue", Arial, sans-serif;
-  --font-family-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+  --font-sans: var(--font-inter-tight), Helvetica, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
-  --font-family-zh: Helvetica, "Helvetica Neue", Arial, sans-serif;
 
-  --breakpoint-text: 1220px;
+  --color-paper: #e8e6e1;
+  --color-ink: #141414;
+  --color-mute: #6b6965;
+  --color-rule: #141414;
+  --color-accent: #ff3d00;
+
   --breakpoint-mobile: 420px;
-}
-
-:root {
-  --background: #fff8f5;
 }
 
 body {
   font-synthesis: none;
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
-  text-rendering: geometricPrecision;
-  background-color: var(--background);
-  font-optical-sizing: auto;
-  letter-spacing: 0.0085em;
-  word-spacing: -0.04em;
+  font-family: var(--font-sans);
+  background-color: var(--color-paper);
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Swiss grid: page title full width, h2 floats into the left third, text in the right two thirds. */
+article {
+  padding-bottom: 6rem;
+}
+@media (min-width: 1024px) {
+  article {
+    position: relative;
+    padding-left: 33.333%;
+  }
+  article > :not(h1, .lead) {
+    max-width: 40rem;
+  }
+  article > h1,
+  article > .lead {
+    margin-left: -50%;
+  }
+  article > h2 {
+    float: left;
+    clear: both;
+    width: 45%;
+    margin-left: -50%;
+    padding-right: 2rem;
+  }
+  /* Float and next block start from the same line, so the h2 sits beside the section's first line. */
+  article > h2,
+  article > h2 + * {
+    margin-top: 3.5rem;
+  }
+  /* Full-width hairline above each section, drawn from the h2's static position. */
+  article > h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    margin-top: -1rem;
+    background: var(--color-rule);
+  }
 }
 
 i,
 em,
 blockquote,
 nav {
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-style: initial;
   font-weight: 400;
   letter-spacing: -0.006em;
 }
 
 blockquote {
-  box-shadow: 1px 0 0 var(--color-neutral-500) inset;
+  box-shadow: 1px 0 0 var(--color-accent) inset;
 }
 @media screen and (max-width: 420px) {
   blockquote {
     /* Make it wider on mobile with a lighter color */
-    box-shadow: 2px 0 0 var(--color-neutral-300) inset;
+    box-shadow: 2px 0 0 var(--color-accent) inset;
   }
 }
 
@@ -57,7 +92,7 @@ main {
 }
 
 pre {
-  background-color: #f7f7f7;
+  background-color: #dedcd6;
   contain: paint;
   overflow-x: auto;
   padding: 0.875rem 1.25rem;
@@ -82,18 +117,18 @@ article {
   .framed > figure > span:first-child {
     padding: var(--frame-padding, 0.875rem);
     background: var(--frame-background, #fff);
-    border: 1px solid var(--color-neutral-200);
+    border: 1px solid var(--color-rule);
   }
   iframe {
     width: 100%;
-    border: 1px solid var(--color-neutral-200);
+    border: 1px solid var(--color-rule);
     background-color: #fff;
   }
   details {
     margin-top: 1.75rem;
     padding: 0.5rem 0;
-    border-top: 1px solid var(--color-neutral-200);
-    border-bottom: 1px solid var(--color-neutral-200);
+    border-top: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
   }
   details summary {
     font-weight: 600;
@@ -105,20 +140,6 @@ article {
   details p:first-of-type {
     margin-top: 0;
   }
-}
-
-.content-fade-out {
-  background: linear-gradient(
-    180deg,
-    hsla(0, 0%, 100%, 1) 0%,
-    hsla(0, 0%, 100%, 0.63) 14%,
-    hsla(0, 0%, 100%, 0.36) 29%,
-    hsla(0, 0%, 100%, 0.19) 43%,
-    hsla(0, 0%, 100%, 0.08) 57%,
-    hsla(0, 0%, 100%, 0.02) 71%,
-    hsla(0, 0%, 100%, 0) 86%,
-    hsla(0, 0%, 100%, 0) 100%
-  );
 }
 
 @supports (view-transition-name: none) {

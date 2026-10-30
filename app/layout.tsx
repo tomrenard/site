@@ -5,13 +5,15 @@ import { Analytics } from "@vercel/analytics/next";
 import { ViewTransition } from "react";
 
 import cn from "clsx";
+import { Inter_Tight } from "next/font/google";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { WavyBackground } from "@/components/wavy-background";
 import { SITE_URL, SITE_DESCRIPTION as DESCRIPTION } from "@/content/site";
 import "./globals.css";
 
+
+const sans = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tight" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -70,7 +72,7 @@ const personSchema = {
 
 export const viewport: Viewport = {
   colorScheme: "only light",
-  themeColor: "#fcfcfc",
+  themeColor: "#e8e6e1",
 };
 
 export default function RootLayout({
@@ -79,29 +81,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden touch-manipulation">
+    <html
+      lang="en"
+      className={cn(sans.variable, "overflow-x-hidden touch-manipulation")}
+    >
       <body
         className={cn(
-          "w-full p-6 sm:p-10 md:p-14",
-          "text-sm leading-6 sm:text-[15px] sm:leading-7 md:text-base md:leading-7",
-          "text-neutral-900",
-          "antialiased"
+          "w-full px-4 sm:px-6 md:px-10",
+          "text-[15px] leading-6 md:text-base md:leading-7",
+          "text-ink antialiased"
         )}
       >
-        <WavyBackground
-          containerClassName="fixed inset-0 z-0 pointer-events-none opacity-50"
-          backgroundFill="#fff8f5"
-        />
-        <div className="fixed h-6 sm:h-10 md:h-14 w-full top-0 left-0 z-30 pointer-events-none content-fade-out" />
-        <div className="flex flex-col items-center relative z-10">
+        <div className="mx-auto max-w-[1440px]">
           <Navbar />
-          <main className="relative flex-1 w-full max-w-2xl [contain:inline-size]">
-            <div className="absolute w-full h-px opacity-50 bg-neutral-200 right-0 mix-blend-multiply" />
+          <main>
             <ViewTransition name="crossfade">
-              <article className="pl-0 pt-10">{children}</article>
+              <article>{children}</article>
             </ViewTransition>
-            <Footer />
           </main>
+          <Footer />
         </div>
         <script
           type="application/ld+json"
