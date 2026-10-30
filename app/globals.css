@@ -270,7 +270,8 @@ h1 .word > span {
 
 .marquee {
   display: flex;
-  overflow: hidden;
+  /* clip, not hidden: hidden makes this a scroll container and freezes the scroll-driven motion. */
+  overflow: clip;
   white-space: nowrap;
 }
 .marquee > div {
@@ -408,7 +409,7 @@ h1 .word > span {
   to { transform: translateY(-30%); opacity: 0.1; }
 }
 @keyframes marquee {
-  to { transform: translateX(-40%); }
+  to { transform: translateX(-60%); }
 }
 @keyframes wipe-out {
   to { clip-path: inset(0 0 100% 0); }
