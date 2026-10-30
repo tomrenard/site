@@ -38,13 +38,12 @@ function Button({ href, variant = "primary", children }: ButtonProps) {
 
 interface ButtonGroupProps {
   children: ReactNode;
-  centered?: boolean;
 }
 
-function ButtonGroup({ children, centered }: ButtonGroupProps) {
+function ButtonGroup({ children }: ButtonGroupProps) {
   return (
     <div
-      className={cn("flex flex-wrap gap-3 mt-10", centered && "justify-center")}
+      className="mt-10 flex flex-wrap gap-3"
     >
       {children}
     </div>
@@ -131,12 +130,6 @@ export const components: Record<
         props.children
       )}
     </h1>
-  ),
-  h2: (props) => (
-    <h2
-      className="mt-12 mb-4 text-lg leading-7 font-medium tracking-[-0.01em] text-balance"
-      {...props}
-    />
   ),
   h3: (props) => (
     <h3

@@ -53,17 +53,21 @@ export function Marquee({ items }: { items: string[] }) {
 }
 
 // Big numbers that count up as they scroll into view; the real value stays for screen readers.
-export function Stats({ items }: { items: { value: number; label: string }[] }) {
+export function Stats({
+  items,
+}: {
+  items: { value: number; label: string }[];
+}) {
   return (
     <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10">
       {items.map((s) => (
-        <div key={s.label} className="border-t border-faint pt-4">
-          <dt className="sr-only">{s.label}</dt>
+        <div
+          key={s.label}
+          className="flex flex-col-reverse border-t border-faint pt-4"
+        >
+          <dt className="mt-3 text-sm leading-5 text-mute">{s.label}</dt>
           <dd className="text-6xl leading-none font-medium tracking-[-0.04em] tabular-nums lg:text-7xl">
             <CountUp value={s.value} />
-          </dd>
-          <dd aria-hidden className="mt-3 text-sm leading-5 text-mute">
-            {s.label}
           </dd>
         </div>
       ))}
@@ -76,15 +80,17 @@ export function Statement({ children }: { children: string }) {
   const words = children.split(" ");
   return (
     <section className="section">
-    <p className="statement text-4xl leading-[1.05] font-medium tracking-[-0.035em] text-balance lg:text-7xl">
-      {words.map((w, i) => (
-        <span key={i}>
-          <span style={{ "--i": i, "--n": words.length } as React.CSSProperties}>
+      <p className="statement text-4xl leading-[1.05] font-medium tracking-[-0.035em] text-balance lg:text-7xl">
+        {words.map((w, i) => [
+          <span
+            key={i}
+            style={{ "--i": i, "--n": words.length } as React.CSSProperties}
+          >
             {w}
-          </span>{" "}
-        </span>
-      ))}
-    </p>
+          </span>,
+          " ",
+        ])}
+      </p>
     </section>
   );
 }

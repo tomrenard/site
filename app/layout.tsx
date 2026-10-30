@@ -91,19 +91,22 @@ export default function RootLayout({
     >
       <body
         className={cn(
-          "w-full px-(--gutter)",
+          "w-full",
           "text-[15px] leading-6 md:text-base md:leading-7",
           "text-ink antialiased"
         )}
       >
-        <div className="mx-auto max-w-[1440px]">
-          <Navbar />
-          <main>
-            <ViewTransition name="crossfade">
-              <article>{children}</article>
-            </ViewTransition>
-          </main>
-          <Footer />
+        <div className="px-(--gutter)">
+          <div className="mx-auto max-w-[1440px]">
+            <Navbar />
+            <main>
+              {/* Triggers the page transition; the CSS animates the whole viewport (root). */}
+              <ViewTransition>
+                <article>{children}</article>
+              </ViewTransition>
+            </main>
+            <Footer />
+          </div>
         </div>
         <script
           type="application/ld+json"

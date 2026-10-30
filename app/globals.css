@@ -118,12 +118,9 @@ main {
 .section-body > :first-child {
   margin-top: 0;
 }
-/* Full-bleed article so the page-change panel spans the screen, not just the text column. */
 article {
   counter-reset: section;
-  display: flow-root; /* keeps the title's top margin inside, so the panel starts under the header */
-  margin-inline: calc(50% - 50vw);
-  padding-inline: calc(50vw - 50%);
+  display: flow-root; /* keeps the title's top margin inside the article */
 }
 
 /* Text link: a thin grey line, an accent line draws over it on hover. */
@@ -245,15 +242,21 @@ h1 .word > span {
   font-size: 12px;
   translate: 12px 12px;
 }
+/* One transition list: this rule wins over .link and the colour utilities, so it carries theirs too. */
 [data-magnetic] {
-  transition: translate 0.5s var(--ease-out);
+  transition:
+    translate 0.5s var(--ease-out),
+    background-size 0.6s var(--ease-out),
+    color 0.15s,
+    background-color 0.15s,
+    border-color 0.15s;
 }
 
 /* Statement words start pale and fill to ink in reading order. */
 .statement {
   text-box: trim-both cap alphabetic;
 }
-.statement > span > span {
+.statement > span {
   color: var(--color-ink);
 }
 
@@ -308,13 +311,7 @@ h1 .word > span {
     animation: pop 0.3s var(--ease-out);
   }
 
-  .marquee > div {
-    animation: marquee 40s linear infinite;
-  }
 
-  .marquee:hover > div {
-    animation-play-state: paused;
-  }
 
   @supports (animation-timeline: view()) {
     /* Reading progress in the accent colour, on top of the header line. */
@@ -323,6 +320,11 @@ h1 .word > span {
       transform-origin: left;
       animation: draw linear both;
       animation-timeline: scroll(root);
+    }
+    /* Marquee moves only while the page scrolls, never on its own (WCAG 2.2.2). */
+    .marquee > div {
+      animation: marquee linear both;
+      animation-timeline: view();
     }
     .section::before {
       animation: draw linear both;
@@ -344,7 +346,7 @@ h1 .word > span {
     .statement {
       view-timeline-name: --statement;
     }
-    .statement > span > span {
+    .statement > span {
       animation: fill linear both;
       animation-timeline: --statement;
       animation-range: cover calc(5% + var(--i) / var(--n) * 30%) cover calc(10% + var(--i) / var(--n) * 30%);
@@ -362,16 +364,20 @@ h1 .word > span {
 }
 
 @supports (view-transition-name: none) {
+  /* Snapshot the whole viewport, not the article, so the sticky header moves with the page. */
+  article {
+    view-transition-name: none !important;
+  }
   @media (prefers-reduced-motion: no-preference) {
-    /* Page change: old page wipes up and away over an accent panel, new page wipes in over it. */
-    ::view-transition-group(crossfade) {
+    /* Page change: the screen lifts away over an accent panel, the new page wipes in over it. */
+    ::view-transition-group(root) {
       background: var(--color-accent);
       animation-duration: 1s;
     }
-    ::view-transition-old(crossfade) {
+    ::view-transition-old(root) {
       animation: wipe-out 0.5s cubic-bezier(0.7, 0, 0.3, 1) both;
     }
-    ::view-transition-new(crossfade) {
+    ::view-transition-new(root) {
       animation: wipe-in 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0.45s both;
     }
   }
@@ -396,7 +402,7 @@ h1 .word > span {
   to { transform: translateY(-30%); opacity: 0.1; }
 }
 @keyframes marquee {
-  to { transform: translateX(-100%); }
+  to { transform: translateX(-40%); }
 }
 @keyframes wipe-out {
   to { clip-path: inset(0 0 100% 0); }

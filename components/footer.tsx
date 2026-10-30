@@ -33,10 +33,10 @@ export default function Footer() {
                 <Copy className="w-3 h-3" />
               )}
             </span>
-            <span className="sr-only" aria-live="polite">
-              {copied ? "Email copied" : ""}
-            </span>
           </button>
+          <span className="sr-only" aria-live="polite">
+            {copied ? "Email copied" : ""}
+          </span>
           <a
             href="https://www.linkedin.com/in/tom-renard-2021/"
             target="_blank"

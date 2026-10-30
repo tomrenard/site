@@ -15,7 +15,7 @@ const links = [
 
 function Item({ href, label }: { href: string; label: string }) {
   const pathname = usePathname();
-  const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = pathname === href || pathname.startsWith(href + "/");
 
   return (
     <li className="flex items-center">

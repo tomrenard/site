@@ -30,7 +30,7 @@ export function Scramble({ children }: { children: string }) {
   useEffect(() => () => clearInterval(timer.current), []);
 
   return (
-    <span className="scramble" onPointerEnter={run} onFocus={run}>
+    <span className="scramble" onPointerEnter={run}>
       <span className="invisible">{children}</span>
       <span
         aria-hidden
@@ -125,7 +125,8 @@ export function Cursor() {
   );
 }
 
-// Counts from 0 to the value once it scrolls into view. Server HTML holds the real value.
+// Counts from 0 to the value once it scrolls into view. Only the visual copy animates;
+// screen readers always get the real value.
 export function CountUp({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -149,5 +150,12 @@ export function CountUp({ value }: { value: number }) {
     return () => { io.disconnect(); cancelAnimationFrame(raf); };
   }, [value]);
 
-  return <span ref={ref}>{value}</span>;
+  return (
+    <>
+      <span ref={ref} aria-hidden>
+        {value}
+      </span>
+      <span className="sr-only">{value}</span>
+    </>
+  );
 }
