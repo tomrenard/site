@@ -64,6 +64,12 @@ export default function Footer() {
           <Download className="w-3 h-3" />
         </a>
       </div>
+      <p
+        aria-hidden
+        className="wordmark mt-16 text-[clamp(3.5rem,19vw,18rem)] font-medium leading-[0.85] tracking-[-0.06em] whitespace-nowrap"
+      >
+        <span>Tom Renard</span>
+      </p>
     </footer>
   );
 }

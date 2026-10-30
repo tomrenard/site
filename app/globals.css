@@ -144,40 +144,31 @@ article {
 
 @supports (view-transition-name: none) {
   @media not (prefers-reduced-motion: reduce) {
+    /* Page change: old page lifts and dims, new page wipes up from the bottom. */
     ::view-transition-old(crossfade) {
-      animation: hide 0.6s cubic-bezier(0.5, 0, 0.25, 1) forwards;
+      animation: hide 0.7s cubic-bezier(0.7, 0, 0.2, 1) forwards;
     }
 
     ::view-transition-new(crossfade) {
-      opacity: 0;
-      animation: appear 0.8s cubic-bezier(0.5, 0, 0.25, 1) 0.1s forwards;
+      animation: wipe 0.9s cubic-bezier(0.7, 0, 0.2, 1) both;
     }
   }
 }
 
 @keyframes hide {
-  0% {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1) translateY(0);
-  }
-  100% {
-    opacity: 0;
-    filter: blur(12px);
-    transform: scale(0.97) translateY(5px);
+  to {
+    opacity: 0.2;
+    transform: translateY(-6vh);
   }
 }
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-    filter: blur(12px);
-    transform: scale(0.97) translateY(10px);
+@keyframes wipe {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(8vh);
   }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1) translateY(0);
+  to {
+    clip-path: inset(0 0 0 0);
   }
 }
 
@@ -196,6 +187,15 @@ h1 .word {
 }
 h1 .word > span {
   display: inline-block;
+}
+
+.wordmark {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+.wordmark > span {
+  display: block;
 }
 
 .roll {
@@ -258,6 +258,11 @@ a:focus-visible .roll > span {
       animation: drift linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
+    }
+    .wordmark > span {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
     }
     article > h2::before {
       transform-origin: left;
