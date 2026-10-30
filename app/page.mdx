@@ -11,9 +11,13 @@ export const metadata = {
   they ship.
 </Lead>
 
+<Section>
+
 Six years in, mostly React and TypeScript, mostly Berlin. I studied management before I wrote code, which is probably why I care more about whether a feature moved anything than about how it was built.
 
-## Now
+</Section>
+
+<Section title="Now">
 
 I work at [Aroundhome](https://www.aroundhome.de), a marketplace for home improvement. Homeowners describe a project, we match them with vetted local trade companies, and the partner pays for the introduction, not the homeowner. Thousands of requests a week, across solar, heating, kitchens, windows and a dozen more categories.
 
@@ -25,7 +29,9 @@ Most recently that was moving the contact step onto the brand site the visitor s
 
 I would rather give an honest read that says not yet than a win that does not hold up.
 
-## What I am good at
+</Section>
+
+<Section title="What I am good at">
 
 Frontend is where I am deepest, and the decisions I care about are the ones with system-wide consequences: what runs in the browser at all, where the client and server line sits, how a design system actually gets adopted rather than just designed, and how you turn a risky change on without paging anyone.
 
@@ -35,13 +41,17 @@ Accessibility I treat as a deadline rather than a virtue. The European Accessibi
 
 The longer version, with where each position came from, is on [craft](/craft). I go into the Go and Ruby services when the problem lives there, and into the infrastructure when it lives there instead.
 
-## How I work with AI
+</Section>
+
+<Section title="How I work with AI">
 
 I use coding agents all day. They make the first draft cheap, which moves the hard part to deciding what should ship, so that is where I spend the time: state boundaries, edge cases, and whether the thing actually does what the ticket asked for.
 
 My side projects make that explicit. Deterministic scripts do the arithmetic, the model only does judgement, and in one of them the build refuses to publish if a claim is not sourced. Guardrails first, then let the agent run.
 
-## Stack
+</Section>
+
+<Section title="Stack">
 
 <StackList>
   <StackItem>
@@ -55,3 +65,9 @@ My side projects make that explicit. Deterministic scripts do the arithmetic, th
   <StackItem>**Testing:** Playwright, Vitest, WCAG 2.2</StackItem>
   <StackItem>**AI tooling:** Claude Code, Cursor</StackItem>
 </StackList>
+
+</Section>
+
+<Marquee
+  items={["React", "TypeScript", "Next.js", "Astro", "Go", "Ruby", "Postgres", "Terraform", "Playwright"]}
+/>

@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
+import { Section, Marquee } from "@/components/section";
 import Image from "next/image";
 import cn from "clsx";
 
@@ -55,7 +56,7 @@ interface TechTagsProps {
 
 function TechTags({ children }: TechTagsProps) {
   return (
-    <p className="mt-1 mb-3 text-sm text-mute">
+    <p className="mb-4 text-sm leading-6 text-mute">
       {children}
     </p>
   );
@@ -67,7 +68,7 @@ interface LeadProps {
 
 function Lead({ children }: LeadProps) {
   return (
-    <div className="lead mb-16 max-w-5xl text-2xl leading-tight tracking-[-0.02em] text-balance md:text-4xl [&_p]:m-0">
+    <div className="lead mb-16 max-w-5xl text-2xl leading-[1.15] tracking-[-0.025em] text-balance md:text-4xl lg:mb-24 [&_p]:m-0">
       {children}
     </div>
   );
@@ -79,7 +80,7 @@ interface StackListProps {
 
 function StackList({ children }: StackListProps) {
   return (
-    <ul className="mt-4 space-y-0.5 list-disc list-outside marker:text-mute pl-5">
+    <ul className="divide-y divide-faint border-y border-faint">
       {children}
     </ul>
   );
@@ -90,7 +91,7 @@ interface StackItemProps {
 }
 
 function StackItem({ children }: StackItemProps) {
-  return <li className="pl-1.5">{children}</li>;
+  return <li className="py-3 [&_p]:m-0">{children}</li>;
 }
 
 // Wraps each word in a mask so the page title rises in word by word.
@@ -112,11 +113,13 @@ export const components: Record<
   ButtonGroup,
   TechTags,
   Lead,
+  Section,
+  Marquee,
   StackList,
   StackItem,
   h1: (props) => (
     <h1
-      className="mt-10 mb-6 text-[clamp(3rem,11vw,10rem)] font-medium leading-[0.88] tracking-[-0.05em] text-balance md:mt-16"
+      className="mt-12 mb-8 text-[clamp(3rem,11vw,10rem)] font-medium leading-[0.88] tracking-[-0.05em] text-balance lg:mt-20 lg:mb-10"
       {...props}
     >
       {typeof props.children === "string" ? (
@@ -128,33 +131,33 @@ export const components: Record<
   ),
   h2: (props) => (
     <h2
-      className="mt-16 mb-4 pt-4 border-t border-rule text-lg font-medium leading-snug tracking-[-0.01em] text-balance lg:mb-0 lg:pt-0 lg:border-0"
+      className="mt-12 mb-4 text-lg leading-7 font-medium tracking-[-0.01em] text-balance"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
-      className="mt-10 mb-1 text-2xl font-medium tracking-[-0.03em] text-balance first:mt-0 [h2+&]:mt-4"
+      className="mt-0 mb-1 text-2xl leading-8 font-medium tracking-[-0.03em] text-balance"
       {...props}
     />
   ),
   ul: (props) => (
     <ul
-      className="mt-3 list-disc list-outside marker:text-mute pl-5"
+      className="mt-4 list-disc list-outside marker:text-mute pl-4 lg:pl-0"
       {...props}
     />
   ),
   ol: (props) => (
     <ol
-      className="mt-7 list-decimal list-outside marker:text-mute pl-5"
+      className="mt-4 list-decimal list-outside marker:text-mute pl-4 lg:pl-0"
       {...props}
     />
   ),
-  li: (props) => <li className="pl-1.5" {...props} />,
+  li: (props) => <li className="mt-2 first:mt-0" {...props} />,
   a: ({ href, ...props }) => {
     return (
       <Link
-        className="break-words decoration-from-font underline underline-offset-2 decoration-mute hover:decoration-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2 focus-visible:rounded-xs"
+        className="link break-words focus-visible:outline focus-visible:outline-1 focus-visible:outline-ink focus-visible:outline-offset-2"
         href={href}
         draggable={false}
         {...(href?.startsWith("https://")
@@ -168,7 +171,7 @@ export const components: Record<
     );
   },
   strong: (props) => <strong className="font-medium" {...props} />,
-  p: (props) => <p className="mt-2" {...props} />,
+  p: (props) => <p className="mt-4" {...props} />,
   blockquote: (props) => (
     <blockquote
       className="pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-mute"
@@ -209,7 +212,7 @@ export const components: Record<
 
     return img;
   },
-  hr: (props) => <hr className="my-10 border-rule/20" {...props} />,
+  hr: (props) => <hr className="my-12 border-faint" {...props} />,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {

@@ -13,8 +13,7 @@ const links = [
 
 function Item({ href, label }: { href: string; label: string }) {
   const pathname = usePathname();
-  const isActive =
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <li className="flex items-center">
@@ -22,9 +21,9 @@ function Item({ href, label }: { href: string; label: string }) {
         href={href}
         aria-current={isActive ? "page" : undefined}
         className={cn(
-          "inline-flex items-center gap-1.5 transition-colors",
+          "inline-flex items-center gap-2 transition-colors",
           "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink",
-          isActive ? "text-ink" : "text-mute hover:text-ink"
+          isActive ? "text-ink" : "text-mute hover:text-ink",
         )}
         draggable={false}
       >
@@ -46,29 +45,34 @@ function Roll({ children }: { children: string }) {
 
 export default function Navbar() {
   return (
-    <header className="site-header sticky top-0 z-30 bg-paper pt-3 text-sm">
-      <div className="grid grid-cols-2 gap-x-4 gap-y-1 pb-2 lg:grid-cols-4">
+    <header className="sticky top-0 z-30 bg-paper text-sm leading-5">
+      <div className="grid-page gap-y-2 py-3">
         <Link
           href="/"
-          className="flex items-center gap-1.5 font-medium"
+          className="header-item col-span-2 flex items-center gap-2 font-medium lg:col-span-4"
           draggable={false}
         >
           <span aria-hidden className="logo-square size-2.5 bg-ink" />
           <Roll>Tom Renard</Roll>
         </Link>
-        <nav className="col-span-2 row-start-2 lg:col-span-1 lg:row-start-auto">
+        <nav className="header-item col-span-4 row-start-2 lg:row-start-auto">
           <ul className="flex gap-4">
             {links.map((l) => (
               <Item key={l.href} {...l} />
             ))}
           </ul>
         </nav>
-        <p className="hidden text-mute lg:block">
+        <p className="header-item hidden text-mute lg:col-span-3 lg:block">
           Senior Product Engineer [Berlin]
         </p>
-        <p className="text-right text-mute">©{new Date().getFullYear()}</p>
+        <p className="header-item col-span-2 col-start-3 text-right text-mute lg:col-span-1 lg:col-start-auto">
+          ©{new Date().getFullYear()}
+        </p>
       </div>
-      <div className="header-rule h-px bg-rule" />
+      <div className="relative h-px">
+        <div className="header-rule absolute inset-0 bg-rule" />
+        <div className="scroll-progress absolute inset-x-0 -top-px h-[3px] bg-accent" />
+      </div>
     </header>
   );
 }
