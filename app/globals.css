@@ -118,9 +118,12 @@ main {
 .section-body > :first-child {
   margin-top: 0;
 }
+/* Full-bleed article so the page-change panel spans the screen, not just the text column. */
 article {
   counter-reset: section;
-  display: flow-root; /* keeps the title's top margin inside the article */
+  display: flow-root; /* keeps the title's top margin inside, so the panel starts under the header */
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc(50vw - 50%);
 }
 
 /* Text link: a thin grey line, an accent line draws over it on hover. */
@@ -364,20 +367,23 @@ h1 .word > span {
 }
 
 @supports (view-transition-name: none) {
-  /* Snapshot the whole viewport, not the article, so the sticky header moves with the page. */
-  article {
-    view-transition-name: none !important;
+  /* Header is its own layer on top, so the panel never covers it, even when scrolled. */
+  header {
+    view-transition-name: site-header;
+  }
+  ::view-transition-group(site-header) {
+    z-index: 1;
   }
   @media (prefers-reduced-motion: no-preference) {
-    /* Page change: the screen lifts away over an accent panel, the new page wipes in over it. */
-    ::view-transition-group(root) {
+    /* Page change: old page wipes up and away over an accent panel, new page wipes in over it. */
+    ::view-transition-group(crossfade) {
       background: var(--color-accent);
       animation-duration: 1s;
     }
-    ::view-transition-old(root) {
+    ::view-transition-old(crossfade) {
       animation: wipe-out 0.5s cubic-bezier(0.7, 0, 0.3, 1) both;
     }
-    ::view-transition-new(root) {
+    ::view-transition-new(crossfade) {
       animation: wipe-in 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0.45s both;
     }
   }

@@ -100,8 +100,7 @@ export default function RootLayout({
           <div className="mx-auto max-w-[1440px]">
             <Navbar />
             <main>
-              {/* Triggers the page transition; the CSS animates the whole viewport (root). */}
-              <ViewTransition>
+              <ViewTransition name="crossfade">
                 <article>{children}</article>
               </ViewTransition>
             </main>
