@@ -9,6 +9,7 @@ import { Inter_Tight } from "next/font/google";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import SmoothScroll from "@/components/smooth-scroll";
 import { SITE_URL, SITE_DESCRIPTION as DESCRIPTION } from "@/content/site";
 import "./globals.css";
 
@@ -105,6 +106,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <SmoothScroll />
         <Analytics />
       </body>
     </html>

@@ -1,5 +1,5 @@
 import type { MDXComponents } from "mdx/types";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import cn from "clsx";
@@ -93,6 +93,17 @@ function StackItem({ children }: StackItemProps) {
   return <li className="pl-1.5">{children}</li>;
 }
 
+// Wraps each word in a mask so the page title rises in word by word.
+function SplitWords({ text }: { text: string }) {
+  return text.split(" ").map((word, i) => (
+    <Fragment key={i}>
+      <span className="word">
+        <span style={{ "--i": i } as React.CSSProperties}>{word}</span>
+      </span>{" "}
+    </Fragment>
+  ));
+}
+
 export const components: Record<
   string,
   (props: any) => ReactNode | Promise<ReactNode>
@@ -107,7 +118,13 @@ export const components: Record<
     <h1
       className="mt-10 mb-6 text-[clamp(3rem,11vw,10rem)] font-medium leading-[0.88] tracking-[-0.05em] text-balance md:mt-16"
       {...props}
-    />
+    >
+      {typeof props.children === "string" ? (
+        <SplitWords text={props.children} />
+      ) : (
+        props.children
+      )}
+    </h1>
   ),
   h2: (props) => (
     <h2

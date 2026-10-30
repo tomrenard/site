@@ -180,3 +180,106 @@ article {
     transform: scale(1) translateY(0);
   }
 }
+
+/* ---------- Motion. Everything below is off for prefers-reduced-motion. ---------- */
+:root {
+  --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Masks for the word reveal; padding keeps descenders from being clipped. */
+h1 .word {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  vertical-align: top;
+}
+h1 .word > span {
+  display: inline-block;
+}
+
+.roll {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.roll > span {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.5s var(--ease-out);
+}
+.roll > span::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+a:hover .roll > span,
+a:focus-visible .roll > span {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* First load: header lines draw, title rises word by word, lead follows. */
+  .header-rule {
+    transform-origin: left;
+    animation: draw 1.4s var(--ease-out) both;
+  }
+  .site-header > div:first-child > * {
+    animation: rise-in 1s var(--ease-out) both;
+  }
+  .site-header > div:first-child > :nth-child(2) { animation-delay: 80ms; }
+  .site-header > div:first-child > :nth-child(3) { animation-delay: 160ms; }
+  .site-header > div:first-child > :nth-child(4) { animation-delay: 240ms; }
+
+  .logo-square {
+    transition: transform 0.6s var(--ease-out);
+  }
+  a:hover .logo-square {
+    transform: rotate(90deg) scale(0.7);
+  }
+
+  h1 .word > span {
+    animation: rise 1.1s var(--ease-out) both;
+    animation-delay: calc(var(--i) * 70ms + 200ms);
+  }
+  article > .lead {
+    animation: fade-up 1.2s var(--ease-out) 550ms both;
+  }
+
+  /* Scroll: blocks rise into view, section lines draw across, the title drifts away. */
+  @supports (animation-timeline: view()) {
+    article > :not(h1, h2, .lead) {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+    article > h1 {
+      animation: drift linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+    article > h2::before {
+      transform-origin: left;
+      animation: draw linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+  }
+}
+
+@keyframes rise {
+  from { transform: translateY(110%); }
+}
+@keyframes rise-in {
+  from { transform: translateY(-120%); opacity: 0; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(2rem); }
+}
+@keyframes draw {
+  from { transform: scaleX(0); }
+}
+@keyframes drift {
+  to { transform: translateY(-30%); opacity: 0.1; }
+}
