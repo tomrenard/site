@@ -50,3 +50,43 @@ export function Marquee({ items }: { items: string[] }) {
     </div>
   );
 }
+
+// Big numbers that count up as they scroll into view; the real value stays for screen readers.
+export function Stats({ items }: { items: { value: number; label: string }[] }) {
+  return (
+    <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10">
+      {items.map((s) => (
+        <div key={s.label} className="border-t border-faint pt-4">
+          <dt className="sr-only">{s.label}</dt>
+          <dd
+            className="count text-6xl leading-none font-medium tracking-[-0.04em] tabular-nums lg:text-7xl"
+            style={{ "--to": s.value } as React.CSSProperties}
+          >
+            <span className="sr-only">{s.value}</span>
+          </dd>
+          <dd aria-hidden className="mt-3 text-sm leading-5 text-mute">
+            {s.label}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+// A large line whose words fill from grey to ink, one after another, as it scrolls through.
+export function Statement({ children }: { children: string }) {
+  const words = children.split(" ");
+  return (
+    <section className="section">
+    <p className="statement text-4xl leading-[1.05] font-medium tracking-[-0.035em] text-balance lg:text-7xl">
+      {words.map((w, i) => (
+        <span key={i}>
+          <span style={{ "--i": i, "--n": words.length } as React.CSSProperties}>
+            {w}
+          </span>{" "}
+        </span>
+      ))}
+    </p>
+    </section>
+  );
+}

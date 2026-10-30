@@ -201,25 +201,66 @@ h1 .word > span {
   translate: 0 -6%;
 }
 
-.roll {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-}
-.roll > span {
+.scramble {
   position: relative;
   display: inline-block;
-  transition: transform 0.5s var(--ease-out);
+  vertical-align: top;
 }
-.roll > span::after {
-  content: attr(data-text);
+
+/* Mouse follower: a small accent square that opens into a label over links. */
+.cursor {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.cursor[data-visible="true"] {
+  opacity: 1;
+}
+.cursor > span {
   position: absolute;
   left: 0;
-  top: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 10px;
+  height: 10px;
+  translate: -50% -50%;
+  background: var(--color-accent);
+  color: var(--color-paper);
+  font-size: 0;
+  white-space: nowrap;
+  transition: min-width 0.4s var(--ease-out), height 0.4s var(--ease-out), padding 0.4s var(--ease-out), font-size 0.2s;
 }
-a:hover .roll > span,
-a:focus-visible .roll > span {
-  transform: translateY(-100%);
+.cursor[data-label="true"] > span {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  translate: 12px 12px;
+}
+[data-magnetic] {
+  transition: translate 0.5s var(--ease-out);
+}
+
+/* Count-up numbers: --n animates as an integer and is printed by a counter. */
+@property --n {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+.count {
+  --n: var(--to);
+  counter-reset: n var(--n);
+}
+.count::before {
+  content: counter(n);
+}
+
+/* Statement words start pale and fill to ink in reading order. */
+.statement {
+  text-box: trim-both cap alphabetic;
+}
+.statement > span > span {
+  color: var(--color-ink);
 }
 
 .marquee {
@@ -267,6 +308,10 @@ a:focus-visible .roll > span {
   .marquee > div {
     animation: marquee 40s linear infinite;
   }
+
+  .count {
+    animation: count 2s var(--ease-out) both;
+  }
   .marquee:hover > div {
     animation-play-state: paused;
   }
@@ -294,6 +339,19 @@ a:focus-visible .roll > span {
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
+    .count {
+      animation: count linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+    .statement {
+      view-timeline-name: --statement;
+    }
+    .statement > span > span {
+      animation: fill linear both;
+      animation-timeline: --statement;
+      animation-range: cover calc(5% + var(--i) / var(--n) * 30%) cover calc(10% + var(--i) / var(--n) * 30%);
+    }
     /* Letters of the footer name rise one after another as it scrolls in. */
     .wordmark {
       view-timeline-name: --wordmark;
@@ -308,12 +366,16 @@ a:focus-visible .roll > span {
 
 @supports (view-transition-name: none) {
   @media (prefers-reduced-motion: no-preference) {
-    /* Page change: old page lifts and dims, new page wipes up from the bottom. */
+    /* Page change: old page wipes up and away over an accent panel, new page wipes in over it. */
+    ::view-transition-group(crossfade) {
+      background: var(--color-accent);
+      animation-duration: 1s;
+    }
     ::view-transition-old(crossfade) {
-      animation: hide 0.7s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+      animation: wipe-out 0.5s cubic-bezier(0.7, 0, 0.3, 1) both;
     }
     ::view-transition-new(crossfade) {
-      animation: wipe 0.9s cubic-bezier(0.7, 0, 0.2, 1) both;
+      animation: wipe-in 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0.45s both;
     }
   }
 }
@@ -336,10 +398,15 @@ a:focus-visible .roll > span {
 @keyframes marquee {
   to { transform: translateX(-100%); }
 }
-@keyframes hide {
-  to { opacity: 0.2; transform: translateY(-6vh); }
+@keyframes wipe-out {
+  to { clip-path: inset(0 0 100% 0); }
 }
-@keyframes wipe {
-  from { clip-path: inset(100% 0 0 0); transform: translateY(8vh); }
-  to { clip-path: inset(0 0 0 0); }
+@keyframes wipe-in {
+  from { clip-path: inset(100% 0 0 0); }
+}
+@keyframes count {
+  from { --n: 0; }
+}
+@keyframes fill {
+  from { color: var(--color-faint); }
 }

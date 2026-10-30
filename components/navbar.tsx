@@ -3,12 +3,14 @@
 import cn from "clsx";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Scramble } from "@/components/motion";
 
 const links = [
   { href: "/", label: "About" },
   { href: "/work", label: "Work" },
   { href: "/craft", label: "Craft" },
   { href: "/projects", label: "Projects" },
+  { href: "/harness", label: "Harness" },
 ];
 
 function Item({ href, label }: { href: string; label: string }) {
@@ -26,20 +28,12 @@ function Item({ href, label }: { href: string; label: string }) {
           isActive ? "text-ink" : "text-mute hover:text-ink",
         )}
         draggable={false}
+        data-magnetic
       >
         {isActive && <span aria-hidden className="size-2 bg-accent" />}
-        <Roll>{label}</Roll>
+        <Scramble>{label}</Scramble>
       </Link>
     </li>
-  );
-}
-
-// Text slides up and a copy rolls in from below on hover.
-function Roll({ children }: { children: string }) {
-  return (
-    <span className="roll">
-      <span data-text={children}>{children}</span>
-    </span>
   );
 }
 
@@ -53,7 +47,7 @@ export default function Navbar() {
           draggable={false}
         >
           <span aria-hidden className="logo-square size-2.5 bg-ink" />
-          <Roll>Tom Renard</Roll>
+          <Scramble>Tom Renard</Scramble>
         </Link>
         <nav className="header-item col-span-4 row-start-2 lg:row-start-auto">
           <ul className="flex gap-4">

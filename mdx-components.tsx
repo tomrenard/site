@@ -1,7 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
-import { Section, Marquee } from "@/components/section";
+import { Section, Marquee, Stats, Statement } from "@/components/section";
 import Image from "next/image";
 import cn from "clsx";
 
@@ -28,6 +28,7 @@ function Button({ href, variant = "primary", children }: ButtonProps) {
       className={cn(baseStyles, variants[variant])}
       style={{ textDecoration: "none" }}
       draggable={false}
+      data-magnetic
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       {children}
@@ -115,11 +116,13 @@ export const components: Record<
   Lead,
   Section,
   Marquee,
+  Stats,
+  Statement,
   StackList,
   StackItem,
   h1: (props) => (
     <h1
-      className="text-[clamp(3rem,11vw,10rem)] font-medium leading-[0.88] tracking-[-0.05em] text-balance"
+      className="text-[clamp(3rem,11vw,10rem)] font-medium leading-[1] tracking-[-0.05em] text-balance"
       {...props}
     >
       {typeof props.children === "string" ? (

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Copy, Download, ExternalLink } from "lucide-react";
+import { Scramble } from "@/components/motion";
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
@@ -21,9 +22,11 @@ export default function Footer() {
         <div className="col-span-4 flex flex-wrap gap-x-6 gap-y-2 lg:col-span-8">
           <button
             onClick={handleCopyEmail}
+            data-cursor="Copy"
+            data-magnetic
             className="link flex w-fit items-center gap-1.5 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink cursor-pointer"
           >
-            <span>{copied ? "Copied" : "Copy email"}</span>
+            <Scramble key={copied ? "c" : "e"}>{copied ? "Copied" : "Copy email"}</Scramble>
             <AnimatePresence mode="wait">
               {copied ? (
                 <motion.span
@@ -51,17 +54,19 @@ export default function Footer() {
             href="https://www.linkedin.com/in/tom-renard-2021/"
             target="_blank"
             rel="noopener noreferrer"
+            data-magnetic
             className="link flex w-fit items-center gap-1.5 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink"
           >
-            LinkedIn
+            <Scramble>LinkedIn</Scramble>
             <ExternalLink className="w-3 h-3" />
           </a>
           <a
             href="/Tom_Renard_Resume.pdf"
             download
+            data-magnetic
             className="link flex w-fit items-center gap-1.5 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink"
           >
-            Resume
+            <Scramble>Resume</Scramble>
             <Download className="w-3 h-3" />
           </a>
         </div>
