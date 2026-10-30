@@ -14,26 +14,26 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#fff8f5",
-          color: "#171717",
+          background: "#e8e6e1",
+          color: "#141414",
           padding: "80px",
           fontFamily: "sans-serif",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-          <div style={{ fontSize: 68, fontWeight: 600, letterSpacing: "-0.02em" }}>
+          <div style={{ fontSize: 120, fontWeight: 500, letterSpacing: "-0.05em", lineHeight: 0.9 }}>
             Tom Renard
           </div>
-          <div style={{ fontSize: 40, color: "#525252" }}>
+          <div style={{ fontSize: 40, color: "#5f5d59" }}>
             Senior Product Engineer
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div style={{ fontSize: 28, color: "#525252", maxWidth: "900px" }}>
+          <div style={{ fontSize: 28, color: "#5f5d59", maxWidth: "900px" }}>
             Frontend deep. Ships across the stack. Owns the outcome after the
             ship.
           </div>
-          <div style={{ fontSize: 24, color: "#a3a3a3" }}>tomrenard.site</div>
+          <div style={{ fontSize: 24, color: "#5f5d59" }}>tomrenard.site</div>
         </div>
       </div>
     ),

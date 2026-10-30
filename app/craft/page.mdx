@@ -29,7 +29,7 @@ export const metadata = {
   is the long version of "frontend is where I am deepest".
 </Lead>
 
-## What ships to the browser is an architecture decision
+<Section title="What ships to the browser is an architecture decision">
 
 Performance is mostly decided before anyone opens a profiler. It is decided when you choose what runs on the client at all.
 
@@ -37,7 +37,9 @@ The clearest example I have is my own: [Repères 2027](/projects) ships around 1
 
 The same thinking applies at work, where the answer is different per page. A marketing page and a contact form have different budgets, and treating them the same is how a page whose only job is to load fast on mobile data ends up shipping 300 KB.
 
-## The client/server line is the hardest call in modern React
+</Section>
+
+<Section title="The client/server line is the hardest call in modern React">
 
 Server components, islands, streaming and hydration all come down to one question asked repeatedly: does this need to exist in the browser?
 
@@ -45,7 +47,9 @@ I have moved three production applications to the Next.js App Router, and I now 
 
 What I look for in review: state that could have stayed on the server, data fetched in the browser that the server already had, and effects doing work that belongs in a loader.
 
-## A design system is a migration problem, not a component problem
+</Section>
+
+<Section title="A design system is a migration problem, not a component problem">
 
 Getting a real organisation onto a design system is much harder than designing one.
 
@@ -53,7 +57,9 @@ I co-own the design to code rollout at Aroundhome: design tokens, then a Tailwin
 
 The smaller version of the same idea: our contact page renders under nine consumer brands, and the brand layer is a per brand configuration entry rather than a fork of the page. Adding the tenth brand is a config change. The routing and infrastructure that get a visitor to that page are a separate problem, and the next section is about those.
 
-## Under React, there is a web platform
+</Section>
+
+<Section title="Under React, there is a web platform">
 
 This is the part I find most frontend engineers have never had to learn, and it is where scaled frontends actually break.
 
@@ -61,7 +67,9 @@ A partial list from one feature that put a form on nine domains. Cookies are sco
 
 None of that is React. All of it is frontend.
 
-## How to ship a risky change, and know whether it worked
+</Section>
+
+<Section title="How to ship a risky change, and know whether it worked">
 
 The interesting question about moving a contact step to another domain is not how you build it. It is how you turn it on.
 
@@ -71,7 +79,9 @@ Knowing whether it worked is the other half, and frontends are bad at telling yo
 
 So I am suspicious of frontend telemetry by default, including my own. The browser is a hostile place to measure from, and a number I cannot reproduce is a bug in the number until proven otherwise.
 
-## Accessibility is a deadline, not a nice to have
+</Section>
+
+<Section title="Accessibility is a deadline, not a nice to have">
 
 I took Doodle's UI to WCAG 2.1 AA ahead of the European Accessibility Act deadline of 28 June 2025. The useful reframing was not moral, it was commercial: for the services it covers, accessible stopped being optional on that date.
 
@@ -80,3 +90,5 @@ It is worth being precise about the scope, because most people are not. The EAA 
 Since this page is a claim about rigour: a review of this very site caught my own inline link focus ring at 1px dotted grey, measuring 2.46:1 against the background where 3:1 is required. That is SC 1.4.11 Non-text Contrast, level AA, and it has been in the spec since WCAG 2.1. My first diagnosis called it the WCAG 2.2 focus appearance criterion, which is wrong twice over: that is SC 2.4.13, and it is level AAA. Being imprecise about which criterion you failed is its own kind of failure. It is fixed.
 
 The work itself is mostly semantics, focus management and keyboard order. It is also the area where I trust automated tooling least. A checker will tell you an element has an accessible name. It will not tell you whether a keyboard user can complete the flow.
+
+</Section>

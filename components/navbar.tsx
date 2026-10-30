@@ -3,48 +3,70 @@
 import cn from "clsx";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Scramble } from "@/components/motion";
 
-function Item(props: React.ComponentProps<typeof Link>) {
+const links = [
+  { href: "/", label: "About" },
+  { href: "/work", label: "Work" },
+  { href: "/craft", label: "Craft" },
+  { href: "/projects", label: "Projects" },
+  { href: "/harness", label: "Harness" },
+];
+
+function Item({ href, label }: { href: string; label: string }) {
   const pathname = usePathname();
-  const href = props.href;
-
-  if (typeof href !== "string") {
-    throw new Error("`href` must be a string");
-  }
-
   const isActive = pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <li
-      className={cn(
-        isActive
-          ? "text-neutral-900"
-          : "text-neutral-400 hover:text-neutral-700",
-        "transition-colors hover:transform-none",
-        "-mx-2"
-      )}
-    >
+    <li className="flex items-center">
       <Link
-        {...props}
-        className="inline-block w-full px-2 focus-visible:outline focus-visible:outline-neutral-400
-        focus-visible:rounded-xs 
-        focus-visible:outline-dotted
-        focus-visible:text-neutral-600"
+        href={href}
+        aria-current={isActive ? "page" : undefined}
+        className={cn(
+          "inline-flex items-center gap-2 transition-colors",
+          "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ink",
+          isActive ? "text-ink" : "text-mute hover:text-ink",
+        )}
         draggable={false}
-      />
+        data-magnetic
+      >
+        {isActive && <span aria-hidden className="size-2 bg-accent" />}
+        <Scramble>{label}</Scramble>
+      </Link>
     </li>
   );
 }
 
 export default function Navbar() {
   return (
-    <nav className="w-full mb-4">
-      <ul className="lowercase text-center flex gap-2 justify-center">
-        <Item href="/">About</Item>
-        <Item href="/work">Work</Item>
-        <Item href="/craft">Craft</Item>
-        <Item href="/projects">Projects</Item>
-      </ul>
-    </nav>
+    <header className="sticky top-0 z-30 bg-paper text-sm leading-5">
+      <div className="grid-page gap-y-2 py-3">
+        <Link
+          href="/"
+          className="header-item col-span-2 flex items-center gap-2 font-medium lg:col-span-4"
+          draggable={false}
+        >
+          <span aria-hidden className="logo-square size-2.5 bg-ink" />
+          <Scramble>Tom Renard</Scramble>
+        </Link>
+        <nav className="header-item col-span-4 row-start-2 lg:row-start-auto">
+          <ul className="flex gap-4">
+            {links.map((l) => (
+              <Item key={l.href} {...l} />
+            ))}
+          </ul>
+        </nav>
+        <p className="header-item hidden text-mute lg:col-span-3 lg:block">
+          Senior Product Engineer [Berlin]
+        </p>
+        <p className="header-item col-span-2 col-start-3 text-right text-mute lg:col-span-1 lg:col-start-auto">
+          ©{new Date().getFullYear()}
+        </p>
+      </div>
+      <div className="relative h-px">
+        <div className="header-rule absolute inset-0 bg-rule" />
+        <div className="scroll-progress absolute inset-x-0 -top-px h-[3px] bg-accent" />
+      </div>
+    </header>
   );
 }

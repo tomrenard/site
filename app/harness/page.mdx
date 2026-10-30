@@ -1,0 +1,95 @@
+export const metadata = {
+  title: "Harness",
+  description:
+    "How I set up Claude Code: hooks that enforce rules, reviews from a fresh context, progress files that end in evidence, and memory with reasons.",
+  alternates: { canonical: "/harness" },
+  openGraph: {
+    title: "Harness - Tom Renard",
+    description:
+      "How I set up Claude Code: hooks that enforce rules, reviews from a fresh context, progress files that end in evidence, and memory with reasons.",
+    url: "/harness",
+    type: "website",
+    siteName: "Tom Renard",
+    locale: "en_GB",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/opengraph-image"],
+    title: "Harness - Tom Renard",
+    description:
+      "How I set up Claude Code: hooks that enforce rules, reviews from a fresh context, progress files that end in evidence, and memory with reasons.",
+  },
+};
+
+# Harness
+
+<Lead>
+  How I set up coding agents so they move fast without touching anything I did
+  not approve.
+</Lead>
+
+<Section>
+
+I work in Claude Code all day. The setup around it lives in one versioned repository: global rules, hooks, skills, subagents and memory. It started as a few lines of instructions and became the most useful code I maintain.
+
+<Stats
+  items={[
+    { value: 255, label: "commits to the setup repository" },
+    { value: 14, label: "skills written for my own work" },
+    { value: 215, label: "lines of tests for three hooks" },
+    { value: 104, label: "memory notes, each with its reason" },
+  ]}
+/>
+
+</Section>
+
+<Section title="The split">
+
+The model writes the first draft. Anything that has to be true is checked by something that is not the model. Scripts do the facts, the model does judgement, and I approve anything that leaves my machine.
+
+</Section>
+
+<Statement>A rule in a prompt is a suggestion. A rule in a hook is a fact.</Statement>
+
+<Section title="Rules that run">
+
+A guard hook reads every shell command and every outbound write before it runs. It blocks a commit on the default branch, a push to a protected branch, and new commits on a merge request that is already approved.
+
+Anything posted under my name (a chat message, a ticket comment, a merge request description) is blocked until I have approved those exact words, and the call has to use them unchanged. The guard has its own test file, because a guard nobody tests is a guess.
+
+</Section>
+
+<Section title="Review from a context that did not write it">
+
+Before a push, a reviewer subagent with a fresh context reads the diff against the brief. It is read only, and every finding needs a file and line as evidence. In parallel, a second tool reviews the same diff, and a third pass only looks for over-engineering: code that could be deleted or replaced by the standard library.
+
+For a decision that is still in flight, a different skill hands it to a reviewer whose job is to disprove it, not approve it. It is cheaper to be wrong before the code exists.
+
+</Section>
+
+<Section title="Done means checked">
+
+Multi-step work starts as a progress file with the acceptance checks written first. It ends with a table: requirement, pass or fail, evidence.
+
+A stop hook will not let the session finish while a row still says fail or unresolved. A start hook lists progress files nobody touched for a week, so nothing half done goes quiet.
+
+</Section>
+
+<Section title="Memory with reasons">
+
+When I correct the agent, the correction becomes a memory note with why it matters and how to apply it. Memory that only says what to do gets applied in the wrong place. Memory that says why gets applied to the next case nobody wrote down.
+
+</Section>
+
+<Section title="Skills">
+
+Skills are packaged procedures the agent loads when a task matches. Mine cover the platform map at work, logs and dead letter queues, end to end test debugging, writing reviews, and a morning check-in that reads my meetings, chat and planning board, then proposes updates and writes nothing without a yes. The design rules behind this site are one too.
+
+</Section>
+
+<Section title="If you start one">
+
+Start with one hook that blocks the mistake you make most often. Keep the setup in version control and test the hooks. Write rules as checks wherever you can, and keep prose for the things only judgement can decide.
+
+</Section>
